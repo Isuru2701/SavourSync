@@ -1,6 +1,9 @@
 # SavourSync
-# A Reservation system for a restaurant
-## _Selected Scenario_: Placing reservations
+# A system for placing reservations at a restaurant
+
+![](https://img.shields.io/badge/Java-ED8B00?style=flat-square&logo=oracle&logoColor=white&labelColor=007396) 
+<br>
+[![](https://img.shields.io/badge/Github-black?style=flat-square&logo=github&logoColor=white&labelColor=black)](https://github.com/Isuru2701/SavourSync)
 
 **HEAVY STC** 
 <hr>
