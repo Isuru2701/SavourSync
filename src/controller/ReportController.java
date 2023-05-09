@@ -6,5 +6,5 @@ package controller;
  * interaction logic with view and model for generating reports
  *
  */
-public class ReportController {
+public class ReportController extends AbstractController{
 }

@@ -1,4 +1,8 @@
 package view;
 
-public class ReserveView {
+public class ReserveView extends AbstractView {
+
+    public ReserveView() {
+
+    }
 }

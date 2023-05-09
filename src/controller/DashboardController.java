@@ -7,5 +7,5 @@ package controller;
  * refer to the readme for more information.
  *
  */
-public class DashboardController {
+public class DashboardController extends AbstractController{
 }

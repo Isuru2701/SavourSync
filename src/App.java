@@ -7,11 +7,11 @@ public class App extends JFrame {
 
     public App() {
         super("SavourSync");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(500, 600);
-        setLocationRelativeTo(null);
+        setSize(900, 600);
         setResizable(false);
         setVisible(true);
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //home page
         setContentPane(new DashboardView());

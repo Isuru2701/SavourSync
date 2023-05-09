@@ -6,5 +6,5 @@ package controller;
  * interaction logic with view and model for reservations
  *
  */
-public class ReserveController {
+public class ReserveController extends AbstractController{
 }
