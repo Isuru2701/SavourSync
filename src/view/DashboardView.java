@@ -1,4 +1,9 @@
 package view;
+import javax.swing.*;
 
-public class DashboardView {
+public class DashboardView extends AbstractView {
+
+    public DashboardView() {
+
+    }
 }

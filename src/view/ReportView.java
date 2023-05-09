@@ -3,4 +3,7 @@ import javax.swing.*;
 
 public class ReportView extends JPanel{
 
+    public ReportView() {
+
+    }
 }
