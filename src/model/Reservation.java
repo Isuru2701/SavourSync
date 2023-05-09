@@ -11,10 +11,15 @@ import java.time.LocalTime;
  */
 public class Reservation {
 
+
     private Client client;
     private Table table;
     private LocalDate date;
     private LocalTime time;
+
+    public Reservation() {
+
+    }
     public Reservation(Client client, Table table, LocalDate date, LocalTime time) {
         this.client = client;
         this.table = table;
