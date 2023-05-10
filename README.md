@@ -31,3 +31,9 @@
 
 <hr>
 
+## DB structure
+```mermaid
+erDiagram
+    Client ||--o{ Reservation : places
+    ORDER ||--|{ LINE-ITEM : contains
+```
