@@ -9,4 +9,6 @@ public abstract class AbstractView extends JPanel {
     public void setController(AbstractController controller){
         this.controller = controller;
     }
+
+    public abstract void initComponents();
 }

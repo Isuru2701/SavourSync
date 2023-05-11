@@ -20,7 +20,8 @@
 - [ ] Dashboard:
     - [ ] list of reservations for the day
     - [ ] list of upcoming reservations
-    - [ ]  Capacity as a percentage
+    - [ ] Capacity as a percentage
+    - [ ] Add/edit/delete tables
 
 <hr>
 

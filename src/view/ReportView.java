@@ -6,4 +6,9 @@ public class ReportView extends AbstractView{
     public ReportView() {
 
     }
+
+    @Override
+    public void initComponents() {
+
+    }
 }

@@ -22,6 +22,7 @@ create table Reservation (
                              table_id int not null,
                              start_datetime datetime not null,
                              primary key (id),
+                             requests varchar(255),
                              foreign key (client_id) references Client(id),
                              foreign key (table_id) references `Table`(id)
 );
