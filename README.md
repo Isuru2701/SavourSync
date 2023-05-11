@@ -32,7 +32,26 @@
 <hr>
 
 ## DB structure
+
 ```mermaid
 erDiagram
+    Client ||--o{ Reservation
+    Reservation }o--|| Table
 
+    Client {
+        int id
+        varchar(255) name
+        varchar(255) email
+    }
+    Reservation {
+        int id
+        int client_id
+        int table_id
+        datetime start_datetime
+    }
+    `Table` {
+        int id
+        int seats
+        boolean available
+    }
 ```

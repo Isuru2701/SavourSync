@@ -9,5 +9,7 @@ package model;
  * useful for calculating capacity, etc.
  */
 public class Restaurant {
-    public static int capacity = 100;
+
+    public static int capacity,occupancy;
+
 }
