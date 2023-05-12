@@ -5,17 +5,23 @@ new FormModel {
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 			name: "this"
-			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "button1"
-				"text": "Hello"
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "SavourSync"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 175
-				"y": 105
+				"x": 295
+				"y": 65
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label2"
+				"text": "Dashboard"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 310
+				"y": 100
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 55, 20 )
-			"size": new java.awt.Dimension( 380, 200 )
+			"size": new java.awt.Dimension( 630, 420 )
 		} )
 	}
 }
-

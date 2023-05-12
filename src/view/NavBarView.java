@@ -3,6 +3,7 @@ package view;
 import controller.NavBarController;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * class for the navigation bar that displays at the top of every view
@@ -39,5 +40,6 @@ public class NavBarView extends AbstractView{
         });
         add(logoutButton);
 
+        setBorder(BorderFactory.createLineBorder(Color.black, 5));
     }
 }
