@@ -11,4 +11,5 @@ public abstract class AbstractView extends JPanel {
     }
 
     public abstract void initComponents();
+
 }

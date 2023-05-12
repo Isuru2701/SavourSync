@@ -1,20 +1,22 @@
 package view;
-import controller.AbstractController;
+import controller.DashboardController;
+import model.Navigation;
 
 import javax.swing.*;
 
 public class DashboardView extends AbstractView {
 
-    private AbstractController controller;
 
+    private DashboardController controller;
     public DashboardView() {
-
+        controller = new DashboardController();
+        initComponents();
 
     }
 
     @Override
     public void initComponents() {
-
+        new NavBarView();
     }
 
 

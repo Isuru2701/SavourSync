@@ -10,4 +10,11 @@ public class ReserveView extends AbstractView {
     public void initComponents() {
 
     }
+
+    //TODO: implement this
+    public void validateForm() {
+
+    }
+
+
 }

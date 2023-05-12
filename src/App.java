@@ -10,7 +10,7 @@ public class App extends JFrame {
         setSize(900, 600);
         setResizable(false);
         setVisible(true);
-
+        setLocation(100, 100);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //home page
