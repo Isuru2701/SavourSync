@@ -9,6 +9,7 @@ public class NavBarView extends AbstractView{
 
     public NavBarView() {
         setController(new NavBarController());
+        initComponents();
     }
 
     @Override
@@ -16,15 +17,15 @@ public class NavBarView extends AbstractView{
 
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 
-        JButton settingsButton = new JButton("Dashboard");
-        settingsButton.addActionListener(e -> {
-            Navigation.navigate(new DashboardView());
+        JButton dashboardButton = new JButton("Dashboard");
+        dashboardButton.addActionListener(e -> {
+            ;
         });
-        add(settingsButton);
+        add(dashboardButton);
 
         JButton reportButton = new JButton("Report");
         reportButton.addActionListener(e -> {
-            Navigation.navigate(new ReportView());
+
         });
         add(reportButton);
 

@@ -1,10 +1,14 @@
+package view;
 
+import controller.NavBarController;
+import model.Navigation;
 import view.*;
 
 import javax.swing.*;
 
 public class App extends JFrame {
 
+    private Navigation navigationService = new Navigation();
     public App() {
         super("SavourSync");
         setSize(900, 600);

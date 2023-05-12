@@ -5,12 +5,12 @@ import view.AbstractView;
 public class Navigation {
     private static Stack stack = new Stack(10);
 
-    public static void navigate(AbstractView view) {
+    public void navigate(AbstractView view) {
         stack.push(view);
-
+        view.initComponents();
     }
 
-    public static AbstractView back() {
+    public AbstractView back() {
         return stack.pop();
     }
 

@@ -16,7 +16,7 @@ public class DashboardView extends AbstractView {
 
     @Override
     public void initComponents() {
-        new NavBarView();
+        add(new NavBarView());
     }
 
 
