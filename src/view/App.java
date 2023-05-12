@@ -16,7 +16,7 @@ public class App extends JFrame {
         super("SavourSync");
         setLayout(null);
         setSize(1400, 1000);
-        setResizable(false);
+        setResizable(true);
 
         //setting up ui themes
         UIManager.put("ButtonUI", "components.ButtonModernDark");

@@ -10,5 +10,11 @@ new FormModel {
 			"location": new java.awt.Point( 0, 0 )
 			"size": new java.awt.Dimension( 690, 425 )
 		} )
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+			name: "navbarPanel"
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 690, 60 )
+		} )
 	}
 }
