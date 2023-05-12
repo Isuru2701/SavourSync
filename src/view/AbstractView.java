@@ -13,6 +13,6 @@ public abstract class AbstractView extends JPanel {
     /**
      * This method is used to initialize the components of the view.
      */
-    public abstract void initComponents();
+    protected abstract void initComponents();
 
 }

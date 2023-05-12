@@ -15,13 +15,13 @@ public class App extends JFrame {
     public App() {
         super("SavourSync");
         setLayout(null);
-        setSize(1400, 1000);
+        setSize(1000, 700);
         setResizable(true);
 
         //setting up ui themes
         UIManager.put("ButtonUI", "components.ButtonModernDark");
 
-        setLocation(0, 0);
+        setLocation(50, 50);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //home page

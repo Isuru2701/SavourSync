@@ -3,45 +3,33 @@ JFDML JFormDesigner: "8.0.4.0.266" Java: "17.0.6" encoding: "UTF-8"
 new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
-		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
 			name: "this"
 			"background": new java.awt.Color( 23, 23, 23, 255 )
 			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "button1"
+				name: "dashboardButton"
 				"text": "Dashboard"
 				"background": &Color0 new java.awt.Color( 63, 63, 63, 255 )
 				"foreground": &Color1 new java.awt.Color( 166, 166, 166, 255 )
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 170
-				"y": 0
-				"width": 102
-				"height": 50
+				"preferredSize": new java.awt.Dimension( 100, 30 )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "button2"
+				name: "reportButton"
 				"text": "Report"
 				"background": #Color0
 				"foreground": #Color1
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 102
-				"height": 50
-				"x": 275
-				"y": 0
+				"preferredSize": new java.awt.Dimension( 100, 30 )
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "button3"
+				name: "logoutButton"
 				"text": "Logout"
 				"background": #Color0
 				"foreground": #Color1
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"width": 102
-				"height": 50
-				"x": 380
-				"y": 0
+				"preferredSize": new java.awt.Dimension( 100, 30 )
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 665, 50 )
+			"location": new java.awt.Point( 0, 5 )
+			"size": new java.awt.Dimension( 665, 60 )
 		} )
 	}
 }
