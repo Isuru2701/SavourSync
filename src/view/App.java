@@ -13,7 +13,7 @@ public class App extends JFrame {
     public App() {
         super("SavourSync");
         setSize(900, 600);
-        setResizable(false);
+        setResizable(true);
         setVisible(true);
         setLocation(100, 100);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

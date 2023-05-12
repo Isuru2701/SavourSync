@@ -9,12 +9,13 @@ new FormModel {
 				name: "button1"
 				"text": "Hello"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 300
-				"y": 205
+				"x": 175
+				"y": 105
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 645, 405 )
+			"location": new java.awt.Point( 55, 20 )
+			"size": new java.awt.Dimension( 380, 200 )
 		} )
 	}
 }
+
