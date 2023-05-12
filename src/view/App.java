@@ -1,5 +1,7 @@
 package view;
 
+import controller.NavBarController;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -12,16 +14,19 @@ import java.awt.*;
  */
 public class App extends JFrame {
 
+    private NavBarController navBarController;
     public App() {
         super("SavourSync");
+        setName("App");
         setLayout(null);
         setSize(1000, 700);
         setResizable(true);
+        navBarController = new NavBarController(this);
 
         //setting up ui themes
         UIManager.put("ButtonUI", "components.ButtonModernDark");
 
-        setLocation(50, 50);
+        setLocation(500, 100);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //home page

@@ -3,11 +3,26 @@ JFDML JFormDesigner: "8.0.4.0.266" Java: "17.0.6" encoding: "UTF-8"
 new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
-		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridLayout ) ) {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 			name: "this"
+			"background": new java.awt.Color( 23, 23, 23, 255 )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+				name: "navbarPanel"
+				"preferredSize": new java.awt.Dimension( 0, 50 )
+				"background": new java.awt.Color( 23, 23, 23, 255 )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "North"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "RESERVATION"
+				"foreground": sfield java.awt.Color white
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "West"
+			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 685, 400 )
+			"size": new java.awt.Dimension( 700, 365 )
 		} )
 	}
 }

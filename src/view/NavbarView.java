@@ -15,8 +15,6 @@ import javax.swing.*;
 public class NavbarView extends AbstractView {
     private NavBarController controller;
     public NavbarView() {
-
-        controller = new NavBarController();
         initComponents();
     }
 
@@ -70,15 +68,20 @@ public class NavbarView extends AbstractView {
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
 
         dashboardButton.addActionListener(e -> {
-            controller.navigate(this, new DashboardView());
+
+            controller.navigate(new DashboardView());
         });
 
         reportButton.addActionListener(e -> {
-            controller.navigate(this, new ReportView());
+            controller.navigate(new ReserveView());
+        });
+
+        reportButton.addActionListener(e -> {
+            controller.navigate(new ReportView());
         });
 
         logoutButton.addActionListener(e -> {
-            System.exit(1);
+            controller.kill();
         });
 
 
