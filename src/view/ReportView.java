@@ -9,7 +9,6 @@ public class ReportView extends AbstractView{
 
     @Override
     public void initComponents() {
-        add(new NavBarView());
         add(new JLabel("Report"));
     }
 }
