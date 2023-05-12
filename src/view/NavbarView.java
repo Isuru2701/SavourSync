@@ -4,6 +4,8 @@
 
 package view;
 
+import controller.NavBarController;
+
 import java.awt.*;
 import javax.swing.*;
 
@@ -11,7 +13,10 @@ import javax.swing.*;
  * @author ASUS
  */
 public class NavbarView extends AbstractView {
+    private NavBarController controller;
     public NavbarView() {
+
+        controller = new NavBarController();
         initComponents();
     }
 
@@ -54,6 +59,18 @@ public class NavbarView extends AbstractView {
         logoutButton.setPreferredSize(new Dimension(100, 30));
         add(logoutButton);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
+
+        dashboardButton.addActionListener(e -> {
+            controller.navigate(this, new DashboardView());
+        });
+
+        reportButton.addActionListener(e -> {
+            controller.navigate(this, new ReportView());
+        });
+
+        logoutButton.addActionListener(e -> {
+            System.exit(1);
+        });
 
 
     }
