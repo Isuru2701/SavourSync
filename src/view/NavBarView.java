@@ -20,6 +20,7 @@ public class NavBarView extends AbstractView{
 
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 
+
         JButton dashboardButton = new JButton("Dashboard");
         dashboardButton.addActionListener(e -> {
             controller.navigate(this, new DashboardView());

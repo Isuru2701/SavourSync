@@ -12,6 +12,7 @@ public class NavBarController extends AbstractController{
         app.setView(nextView);
 
     }
+
     public void kill() {
         System.exit(0);
     }
