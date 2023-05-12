@@ -1,12 +1,12 @@
 package view;
 
 import controller.NavBarController;
-import model.Navigation;
 
 import javax.swing.*;
 
 public class NavBarView extends AbstractView{
 
+    private NavBarController controller;
     public NavBarView() {
         setController(new NavBarController());
         initComponents();
@@ -19,7 +19,7 @@ public class NavBarView extends AbstractView{
 
         JButton dashboardButton = new JButton("Dashboard");
         dashboardButton.addActionListener(e -> {
-            ;
+            controller.navigate(this, new DashboardView());
         });
         add(dashboardButton);
 
@@ -31,7 +31,7 @@ public class NavBarView extends AbstractView{
 
         JButton logoutButton = new JButton("Logout");
         logoutButton.addActionListener(e -> {
-            System.exit(0);
+            controller.kill();
         });
         add(logoutButton);
 
