@@ -17,6 +17,9 @@ public class DashboardView extends AbstractView {
     public void initComponents() {
         //add navigation bar
         add(new NavBarView());
+
+        //add dashboard
+        add(new JLabel("Dashboard"));
     }
 
 

@@ -1,10 +1,13 @@
 package view;
 
-import controller.NavBarController;
-import view.*;
-
 import javax.swing.*;
 
+/**
+ * This class is the main view of the application.
+ * It is responsible for displaying the navigation bar and the current view.
+ * It is also responsible for switching between views.
+ * contains some minimal functionality for the window.
+ */
 public class App extends JFrame {
 
     public App() {

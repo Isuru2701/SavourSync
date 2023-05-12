@@ -11,7 +11,7 @@ public class NavBarView extends AbstractView{
 
     private NavBarController controller;
     public NavBarView() {
-        setController(new NavBarController());
+        controller = new NavBarController();
         initComponents();
     }
 
@@ -28,7 +28,7 @@ public class NavBarView extends AbstractView{
 
         JButton reportButton = new JButton("Report");
         reportButton.addActionListener(e -> {
-
+            controller.navigate(this, new ReportView());
         });
         add(reportButton);
 
