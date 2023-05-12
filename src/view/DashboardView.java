@@ -1,6 +1,5 @@
 package view;
 import controller.DashboardController;
-import model.Navigation;
 
 import javax.swing.*;
 

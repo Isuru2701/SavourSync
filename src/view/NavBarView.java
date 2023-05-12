@@ -4,6 +4,9 @@ import controller.NavBarController;
 
 import javax.swing.*;
 
+/**
+ * class for the navigation bar that displays at the top of every view
+ */
 public class NavBarView extends AbstractView{
 
     private NavBarController controller;
