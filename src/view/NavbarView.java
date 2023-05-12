@@ -24,17 +24,19 @@ public class NavbarView extends AbstractView {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner Evaluation license - isuru Yahampath
         dashboardButton = new JButton();
+        reserveButton = new JButton();
         reportButton = new JButton();
         logoutButton = new JButton();
 
         //======== this ========
         setBackground(new Color(0x171717));
-        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing.
-        border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border . TitledBorder. CENTER
-        ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font
-        . BOLD ,12 ) ,java . awt. Color .red ) , getBorder () ) );  addPropertyChangeListener(
-        new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r"
-        .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new
+        javax . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDes\u0069gner \u0045valua\u0074ion" , javax
+        . swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java
+        . awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,java . awt
+        . Color .red ) , getBorder () ) );  addPropertyChangeListener( new java. beans .
+        PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order" .
+        equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
         setLayout(new FlowLayout());
 
         //---- dashboardButton ----
@@ -44,6 +46,13 @@ public class NavbarView extends AbstractView {
         dashboardButton.setPreferredSize(new Dimension(100, 30));
         dashboardButton.setFocusPainted(false);
         add(dashboardButton);
+
+        //---- reserveButton ----
+        reserveButton.setText("Reserve");
+        reserveButton.setBackground(new Color(0x3f3f3f));
+        reserveButton.setForeground(new Color(0xa6a6a6));
+        reserveButton.setPreferredSize(new Dimension(100, 30));
+        add(reserveButton);
 
         //---- reportButton ----
         reportButton.setText("Report");
@@ -78,6 +87,7 @@ public class NavbarView extends AbstractView {
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     // Generated using JFormDesigner Evaluation license - isuru Yahampath
     private JButton dashboardButton;
+    private JButton reserveButton;
     private JButton reportButton;
     private JButton logoutButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on

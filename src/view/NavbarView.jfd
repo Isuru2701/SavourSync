@@ -15,6 +15,13 @@ new FormModel {
 				"focusPainted": false
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "reserveButton"
+				"text": "Reserve"
+				"background": #Color0
+				"foreground": #Color1
+				"preferredSize": &Dimension0 new java.awt.Dimension( 100, 30 )
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "reportButton"
 				"text": "Report"
 				"background": #Color0
@@ -26,7 +33,7 @@ new FormModel {
 				"text": "Logout"
 				"background": #Color0
 				"foreground": #Color1
-				"preferredSize": new java.awt.Dimension( 100, 30 )
+				"preferredSize": #Dimension0
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 5 )
