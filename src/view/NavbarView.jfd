@@ -12,6 +12,7 @@ new FormModel {
 				"background": &Color0 new java.awt.Color( 63, 63, 63, 255 )
 				"foreground": &Color1 new java.awt.Color( 166, 166, 166, 255 )
 				"preferredSize": new java.awt.Dimension( 100, 30 )
+				"focusPainted": false
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "reportButton"
