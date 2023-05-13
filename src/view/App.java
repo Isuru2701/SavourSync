@@ -6,6 +6,7 @@ package view;
 
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
+import controller.AppController;
 
 import java.awt.*;
 import javax.swing.*;
@@ -14,6 +15,8 @@ import javax.swing.*;
  * @author ASUS
  */
 public class App extends JFrame {
+
+    AppController controller;
     public App() {
         try {
             UIManager.setLookAndFeel(new FlatMacDarkLaf());
@@ -32,7 +35,7 @@ public class App extends JFrame {
         reportButton = new JButton();
         reserveButton = new JButton();
         logoutButton = new JButton();
-        panel1 = new JPanel();
+        contentPanel = new JPanel();
 
         //======== this ========
         setPreferredSize(new Dimension(1000, 750));
@@ -45,13 +48,12 @@ public class App extends JFrame {
 
         //======== navbarPanel ========
         {
-            navbarPanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
-            swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border
-            . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog"
-            ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,navbarPanel. getBorder
-            ( )) ); navbarPanel. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
-            .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException
-            ( ); }} );
+            navbarPanel.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
+            EmptyBorder( 0, 0, 0, 0) , "", javax. swing. border. TitledBorder. CENTER, javax. swing
+            . border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ),
+            java. awt. Color. red) ,navbarPanel. getBorder( )) ); navbarPanel. addPropertyChangeListener (new java. beans. PropertyChangeListener( )
+            { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () ))
+            throw new RuntimeException( ); }} );
             navbarPanel.setLayout(new FlowLayout());
 
             //---- dashboardButton ----
@@ -79,26 +81,15 @@ public class App extends JFrame {
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 5, 0), 0, 0));
 
-        //======== panel1 ========
+        //======== contentPanel ========
         {
-            panel1.setLayout(null);
-
-            {
-                // compute preferred size
-                Dimension preferredSize = new Dimension();
-                for(int i = 0; i < panel1.getComponentCount(); i++) {
-                    Rectangle bounds = panel1.getComponent(i).getBounds();
-                    preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
-                    preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
-                }
-                Insets insets = panel1.getInsets();
-                preferredSize.width += insets.right;
-                preferredSize.height += insets.bottom;
-                panel1.setMinimumSize(preferredSize);
-                panel1.setPreferredSize(preferredSize);
-            }
+            contentPanel.setLayout(new GridBagLayout());
+            ((GridBagLayout)contentPanel.getLayout()).columnWidths = new int[] {0, 0};
+            ((GridBagLayout)contentPanel.getLayout()).rowHeights = new int[] {0, 0};
+            ((GridBagLayout)contentPanel.getLayout()).columnWeights = new double[] {1.0, 1.0E-4};
+            ((GridBagLayout)contentPanel.getLayout()).rowWeights = new double[] {1.0, 1.0E-4};
         }
-        contentPane.add(panel1, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
+        contentPane.add(contentPanel, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 0, 0), 0, 0));
         pack();
@@ -106,7 +97,33 @@ public class App extends JFrame {
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        
+
+
+        //ADDING ACTION LISTENERS
+        dashboardButton.addActionListener(e -> {
+            controller.setView(new DashboardView());
+        });
+
+        reportButton.addActionListener(e -> {
+            controller.setView(new ReportView());
+        });
+
+        reserveButton.addActionListener(e -> {
+            controller.setView(new ReserveView());
+        });
+
+        logoutButton.addActionListener(e -> {
+            controller.kill();
+        });
+    }
+    
+    public JPanel getContentPanel() {
+        return contentPanel;
+    }
+
+    public void setController(AppController controller) {
+        this.controller = controller;
+        controller = new AppController(this);
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
@@ -116,6 +133,6 @@ public class App extends JFrame {
     private JButton reportButton;
     private JButton reserveButton;
     private JButton logoutButton;
-    private JPanel panel1;
+    private JPanel contentPanel;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }

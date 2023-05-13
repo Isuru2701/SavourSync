@@ -10,12 +10,12 @@ import javax.swing.*;
 /**
  * @author ASUS
  */
-public class ReportView extends JPanel {
+public class ReportView extends AbstractView {
     public ReportView() {
         initComponents();
     }
 
-    private void initComponents() {
+    public void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner Evaluation license - isuru Yahampath
 
