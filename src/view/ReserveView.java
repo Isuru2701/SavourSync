@@ -28,22 +28,28 @@ public class ReserveView extends AbstractView {
         label5 = new JLabel();
         label6 = new JLabel();
         textField4 = new JTextField();
-        textField5 = new JTextField();
         label7 = new JLabel();
         scrollPane1 = new JScrollPane();
         textArea1 = new JTextArea();
         button1 = new JButton();
         button2 = new JButton();
-        label8 = new JLabel();
-        label9 = new JLabel();
         label10 = new JLabel();
+        comboBox3 = new JComboBox();
+        label11 = new JLabel();
+        comboBox4 = new JComboBox();
+        comboBox5 = new JComboBox();
+        toggleButton1 = new JToggleButton();
+        comboBox6 = new JComboBox();
+        comboBox7 = new JComboBox();
+        comboBox8 = new JComboBox();
 
         //======== this ========
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder(
-        0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder
-        . BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt. Color.
-        red) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .
-        beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+        setPreferredSize(new Dimension(1000, 750));
+        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(
+        0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder
+        .BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt.Color.
+        red), getBorder())); addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.
+        beans.PropertyChangeEvent e){if("\u0062ord\u0065r".equals(e.getPropertyName()))throw new RuntimeException();}});
         setLayout(null);
 
         //---- label1 ----
@@ -52,84 +58,92 @@ public class ReserveView extends AbstractView {
         add(label1);
         label1.setBounds(new Rectangle(new Point(25, 30), label1.getPreferredSize()));
         add(textField1);
-        textField1.setBounds(120, 70, 145, 35);
+        textField1.setBounds(165, 75, 155, 50);
 
         //---- label2 ----
         label2.setText("Name");
         add(label2);
-        label2.setBounds(new Rectangle(new Point(35, 75), label2.getPreferredSize()));
+        label2.setBounds(35, 75, 55, 50);
 
         //---- label3 ----
         label3.setText("Email");
         label3.setPreferredSize(new Dimension(100, 16));
         add(label3);
-        label3.setBounds(new Rectangle(new Point(35, 130), label3.getPreferredSize()));
+        label3.setBounds(35, 130, 125, 50);
         add(textField2);
-        textField2.setBounds(120, 130, 145, 35);
+        textField2.setBounds(165, 135, 155, 50);
 
         //---- label4 ----
         label4.setText("Contact No.");
         label4.setPreferredSize(new Dimension(100, 16));
         add(label4);
-        label4.setBounds(new Rectangle(new Point(35, 200), label4.getPreferredSize()));
+        label4.setBounds(35, 200, 125, 50);
         add(textField3);
-        textField3.setBounds(120, 200, 145, 35);
+        textField3.setBounds(165, 205, 155, 50);
 
         //---- label5 ----
-        label5.setText("Table No(s).");
+        label5.setText("Table Number");
         label5.setPreferredSize(new Dimension(100, 16));
         add(label5);
-        label5.setBounds(new Rectangle(new Point(380, 75), label5.getPreferredSize()));
+        label5.setBounds(390, 60, 110, 50);
 
         //---- label6 ----
         label6.setText("Seats");
         label6.setPreferredSize(new Dimension(100, 16));
         add(label6);
-        label6.setBounds(new Rectangle(new Point(35, 265), label6.getPreferredSize()));
+        label6.setBounds(35, 265, 125, 50);
         add(textField4);
-        textField4.setBounds(120, 265, 145, 35);
-        add(textField5);
-        textField5.setBounds(380, 135, 215, 35);
+        textField4.setBounds(165, 270, 155, 50);
 
         //---- label7 ----
         label7.setText("Additional Requests");
         label7.setPreferredSize(new Dimension(150, 16));
         add(label7);
-        label7.setBounds(new Rectangle(new Point(35, 325), label7.getPreferredSize()));
+        label7.setBounds(30, 375, 205, 41);
 
         //======== scrollPane1 ========
         {
             scrollPane1.setViewportView(textArea1);
         }
         add(scrollPane1);
-        scrollPane1.setBounds(35, 345, 440, 115);
+        scrollPane1.setBounds(30, 425, 495, 140);
 
         //---- button1 ----
         button1.setText("Submit");
         add(button1);
-        button1.setBounds(510, 420, 100, 37);
+        button1.setBounds(590, 500, 155, 62);
 
         //---- button2 ----
         button2.setText("Clear All");
         add(button2);
-        button2.setBounds(510, 365, 100, 37);
-
-        //---- label8 ----
-        label8.setText("seperate multiple values");
-        label8.setFont(new Font("Segoe UI", Font.ITALIC, 11));
-        add(label8);
-        label8.setBounds(380, 95, 215, label8.getPreferredSize().height);
-
-        //---- label9 ----
-        label9.setText("with a comma");
-        label9.setFont(new Font("Segoe UI", Font.ITALIC, 11));
-        add(label9);
-        label9.setBounds(380, 110, 215, 15);
+        button2.setBounds(590, 430, 155, 62);
 
         //---- label10 ----
-        label10.setText("Date and Time");
+        label10.setText("Date");
         add(label10);
-        label10.setBounds(385, 190, 105, label10.getPreferredSize().height);
+        label10.setBounds(390, 120, 115, 40);
+        add(comboBox3);
+        comboBox3.setBounds(640, 160, 125, 45);
+
+        //---- label11 ----
+        label11.setText("Time");
+        add(label11);
+        label11.setBounds(380, 225, 135, 50);
+        add(comboBox4);
+        comboBox4.setBounds(380, 275, 130, 55);
+        add(comboBox5);
+        comboBox5.setBounds(515, 275, 130, 55);
+
+        //---- toggleButton1 ----
+        toggleButton1.setText("text");
+        add(toggleButton1);
+        toggleButton1.setBounds(650, 275, 105, 55);
+        add(comboBox6);
+        comboBox6.setBounds(510, 65, 125, 45);
+        add(comboBox7);
+        comboBox7.setBounds(510, 160, 125, 45);
+        add(comboBox8);
+        comboBox8.setBounds(380, 160, 125, 45);
 
         {
             // compute preferred size
@@ -160,14 +174,19 @@ public class ReserveView extends AbstractView {
     private JLabel label5;
     private JLabel label6;
     private JTextField textField4;
-    private JTextField textField5;
     private JLabel label7;
     private JScrollPane scrollPane1;
     private JTextArea textArea1;
     private JButton button1;
     private JButton button2;
-    private JLabel label8;
-    private JLabel label9;
     private JLabel label10;
+    private JComboBox comboBox3;
+    private JLabel label11;
+    private JComboBox comboBox4;
+    private JComboBox comboBox5;
+    private JToggleButton toggleButton1;
+    private JComboBox comboBox6;
+    private JComboBox comboBox7;
+    private JComboBox comboBox8;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }

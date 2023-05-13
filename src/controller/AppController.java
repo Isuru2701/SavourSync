@@ -6,7 +6,6 @@ public class AppController {
 
     private App app;
 
-
     public AppController(App app) {
         this.app = app;
 

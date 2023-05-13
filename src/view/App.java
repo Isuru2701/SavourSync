@@ -34,8 +34,8 @@ public class App extends JFrame {
         // Generated using JFormDesigner Evaluation license - isuru Yahampath
         navbarPanel = new JPanel();
         dashboardButton = new JButton();
-        reportButton = new JButton();
         reserveButton = new JButton();
+        reportButton = new JButton();
         logoutButton = new JButton();
         contentPanel = new JPanel();
 
@@ -51,12 +51,12 @@ public class App extends JFrame {
 
         //======== navbarPanel ========
         {
-            navbarPanel.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.
-            border.EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing.border.TitledBorder.CENTER
-            ,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font
-            .BOLD,12),java.awt.Color.red),navbarPanel. getBorder()));navbarPanel. addPropertyChangeListener(
-            new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062ord\u0065r"
-            .equals(e.getPropertyName()))throw new RuntimeException();}});
+            navbarPanel.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .
+            EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing .border . TitledBorder. CENTER ,javax . swing
+            . border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,
+            java . awt. Color .red ) ,navbarPanel. getBorder () ) ); navbarPanel. addPropertyChangeListener( new java. beans .PropertyChangeListener ( )
+            { @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062ord\u0065r" .equals ( e. getPropertyName () ) )
+            throw new RuntimeException( ) ;} } );
             navbarPanel.setLayout(new FlowLayout());
 
             //---- dashboardButton ----
@@ -65,15 +65,15 @@ public class App extends JFrame {
             dashboardButton.setPreferredSize(new Dimension(150, 50));
             navbarPanel.add(dashboardButton);
 
-            //---- reportButton ----
-            reportButton.setText("Report");
-            reportButton.setPreferredSize(new Dimension(150, 50));
-            navbarPanel.add(reportButton);
-
             //---- reserveButton ----
             reserveButton.setText("Reserve");
             reserveButton.setPreferredSize(new Dimension(150, 50));
             navbarPanel.add(reserveButton);
+
+            //---- reportButton ----
+            reportButton.setText("Report");
+            reportButton.setPreferredSize(new Dimension(150, 50));
+            navbarPanel.add(reportButton);
 
             //---- logoutButton ----
             logoutButton.setText("Exit");
@@ -131,8 +131,8 @@ public class App extends JFrame {
     // Generated using JFormDesigner Evaluation license - isuru Yahampath
     private JPanel navbarPanel;
     private JButton dashboardButton;
-    private JButton reportButton;
     private JButton reserveButton;
+    private JButton reportButton;
     private JButton logoutButton;
     private JPanel contentPanel;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on

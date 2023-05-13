@@ -21,13 +21,13 @@ new FormModel {
 					"preferredSize": new java.awt.Dimension( 150, 50 )
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
-					name: "reportButton"
-					"text": "Report"
+					name: "reserveButton"
+					"text": "Reserve"
 					"preferredSize": new java.awt.Dimension( 150, 50 )
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
-					name: "reserveButton"
-					"text": "Reserve"
+					name: "reportButton"
+					"text": "Report"
 					"preferredSize": new java.awt.Dimension( 150, 50 )
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
@@ -47,4 +47,3 @@ new FormModel {
 		} )
 	}
 }
-
