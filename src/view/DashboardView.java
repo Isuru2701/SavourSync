@@ -18,22 +18,41 @@ public class DashboardView extends AbstractView {
     public void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner Evaluation license - isuru Yahampath
-        button1 = new JButton();
+        label1 = new JLabel();
+        label2 = new JLabel();
+        label3 = new JLabel();
+        label4 = new JLabel();
 
         //======== this ========
-        setBackground(new Color(0x8a5c5c));
-        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing.
-        border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing .border . TitledBorder. CENTER
-        ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .awt . Font
-        . BOLD ,12 ) ,java . awt. Color .red ) , getBorder () ) );  addPropertyChangeListener(
-        new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062ord\u0065r"
-        .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+        setPreferredSize(new Dimension(1000, 550));
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder( 0
+        , 0, 0, 0) , "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
+        , new java .awt .Font ("Dialo\u0067" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,
+         getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+        ) {if ("borde\u0072" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
         setLayout(null);
 
-        //---- button1 ----
-        button1.setText("text");
-        add(button1);
-        button1.setBounds(new Rectangle(new Point(185, 105), button1.getPreferredSize()));
+        //---- label1 ----
+        label1.setText("SavourSync");
+        add(label1);
+        label1.setBounds(new Rectangle(new Point(50, 50), label1.getPreferredSize()));
+
+        //---- label2 ----
+        label2.setText("Current Capacity");
+        add(label2);
+        label2.setBounds(new Rectangle(new Point(400, 50), label2.getPreferredSize()));
+
+        //---- label3 ----
+        label3.setText("Reservations for today");
+        label3.setPreferredSize(new Dimension(130, 16));
+        add(label3);
+        label3.setBounds(new Rectangle(new Point(405, 160), label3.getPreferredSize()));
+
+        //---- label4 ----
+        label4.setText("Manage Tables");
+        label4.setPreferredSize(new Dimension(100, 16));
+        add(label4);
+        label4.setBounds(new Rectangle(new Point(45, 155), label4.getPreferredSize()));
 
         {
             // compute preferred size
@@ -54,6 +73,9 @@ public class DashboardView extends AbstractView {
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     // Generated using JFormDesigner Evaluation license - isuru Yahampath
-    private JButton button1;
+    private JLabel label1;
+    private JLabel label2;
+    private JLabel label3;
+    private JLabel label4;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }
