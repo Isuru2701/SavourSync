@@ -1,5 +1,7 @@
 package model;
 
+import java.sql.ResultSet;
+
 /**
  * Class: Client
  * <br>
@@ -11,6 +13,7 @@ public class Client {
     private String name;
     private String phone;
     private String email;
+    private int id;
 
     public Client(String name, String phone, String email) {
         this.name = name;
@@ -42,5 +45,25 @@ public class Client {
         this.email = email;
     }
 
+    public boolean exists() throws RuntimeException{
+        try {
+            DBConn db = new DBConn();
+            String query = "SELECT * FROM client WHERE name = ? AND phone = ? AND email = ?";
+            ResultSet reply = db.query(query, name, phone, email);
+            if(reply.next()) {
+                this.name = reply.getString("name");
+                this.phone = reply.getString("phone");
+                this.email = reply.getString("email");
+                this.id = reply.getInt("id");
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        catch(Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 }

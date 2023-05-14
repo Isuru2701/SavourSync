@@ -15,4 +15,12 @@ public abstract class AbstractView extends JPanel {
      */
     protected abstract void initComponents();
 
+    public void displayError(String txt) {
+        JOptionPane.showMessageDialog(this, txt, "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+    public void displaySuccess(String txt) {
+        JOptionPane.showMessageDialog(this, txt, "Success", JOptionPane.INFORMATION_MESSAGE);
+    }
+
 }

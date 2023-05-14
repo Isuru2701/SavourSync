@@ -19,7 +19,7 @@ public class DBConn {
 
     //all methods throw RunTimeExceptions if there are any errors.
     //These must be caught at the higher level, and errors displayed appropriately by the controllers/views.
-    public DBConn() {
+    public DBConn() throws RuntimeException {
         try {
             Class.forName("com.mysql.jdbc.Driver");
         } catch (ClassNotFoundException e) {
@@ -28,6 +28,7 @@ public class DBConn {
 
         try {
             con = DriverManager.getConnection(url, uname, passwd);
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -38,9 +39,9 @@ public class DBConn {
      * Executes a query and returns the result set
      * @param query : the query as a PREPARED STATEMENT
      * @param params : the parameters
-     * @return
+     * @return : the result set
      */
-    public ResultSet query(String query, Object... params) {
+    public ResultSet query(String query, Object... params) throws RuntimeException{
         try {
             //using prepared statement to prevent sql injection
             PreparedStatement stmt = con.prepareStatement(query);
@@ -65,7 +66,7 @@ public class DBConn {
      * @param nonQuery : the write operation as a PREPARED STATEMENT
      * @param params : the parameters
      */
-    public void write(String nonQuery, Object... params) {
+    public void write(String nonQuery, Object... params)throws RuntimeException {
         try {
             PreparedStatement stmt = con.prepareStatement(nonQuery);
 
@@ -86,7 +87,7 @@ public class DBConn {
      * Dispose the connection
      * Call when done with using the object
      */
-    public void kill() {
+    public void kill() throws RuntimeException {
         try {
             con.close();
         } catch (SQLException e) {

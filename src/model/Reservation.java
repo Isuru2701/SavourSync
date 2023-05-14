@@ -59,7 +59,14 @@ public class Reservation {
         return table;
     }
 
-    public void save() {
+    public void save() throws RuntimeException{
+        try {
+            DBConn db = new DBConn();
+            String query = "INSERT INTO reservation (client_id, table_id, date, time) VALUES (?, ?, ?, ?)";
+        }
+        catch(RuntimeException e) {
+            throw new RuntimeException(e.getMessage());
+        }
 
     }
 
