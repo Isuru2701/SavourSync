@@ -15,6 +15,9 @@ public class Client {
     private String email;
     private int id;
 
+    public Client(int id) {
+        this.id = id;
+    }
     public Client(String name, String phone, String email) {
         this.name = name;
         this.phone = phone;
@@ -23,6 +26,10 @@ public class Client {
 
     public String getName() {
         return name;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public void setName(String name) {
@@ -60,6 +67,18 @@ public class Client {
             else {
                 return false;
             }
+        }
+        catch(Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void save() throws RuntimeException {
+        try{
+            DBConn db = new DBConn();
+            String query = "INSERT INTO client (name, phone, email) VALUES (?, ?, ?)";
+            db.write(query, name, phone, email);
+
         }
         catch(Exception e) {
             throw new RuntimeException(e);

@@ -2,6 +2,7 @@ package model;
 
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 /**
@@ -63,6 +64,14 @@ public class Reservation {
         try {
             DBConn db = new DBConn();
             String query = "INSERT INTO reservation (client_id, table_id, date, time) VALUES (?, ?, ?, ?)";
+
+            //if this client doesn't exist in the database, add it to the client table
+            if(!client.exists()) {
+                client.save();
+            }
+
+            db.write(query, client.getId(), table.getId(), LocalDateTime.of(date, time));
+
         }
         catch(RuntimeException e) {
             throw new RuntimeException(e.getMessage());
