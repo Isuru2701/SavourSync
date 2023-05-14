@@ -24,7 +24,7 @@ create table Reservation (
                              start_datetime datetime not null,
                              primary key (id),
                              requests varchar(255),
-                             status varchar(20) not null default 'PENDING',
+                             status varchar(20) not null default 'UPCOMING',
                              foreign key (client_id) references Client(id),
                              foreign key (table_id) references `Table`(id)
 );

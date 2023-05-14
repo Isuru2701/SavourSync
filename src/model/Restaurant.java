@@ -10,6 +10,21 @@ package model;
  */
 public class Restaurant {
 
-    public static int capacity,occupancy;
+    public static int getCapacity() {
+        return capacity;
+    }
 
+    public static void setCapacity(int capacity) {
+        Restaurant.capacity = capacity;
+    }
+
+    public static int getOccupancy() {
+        return occupancy;
+    }
+
+    public static void setOccupancy(int occupancy) {
+        Restaurant.occupancy = occupancy;
+    }
+
+    public static int capacity,occupancy;
 }
