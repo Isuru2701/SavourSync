@@ -85,4 +85,22 @@ public class Client {
         }
     }
 
+    public void load() throws RuntimeException {
+        try {
+            DBConn db = new DBConn();
+            String query = "SELECT * FROM client WHERE id = ?";
+            ResultSet reply = db.query(query, id);
+            if(reply.next()) {
+                this.name = reply.getString("name");
+                this.phone = reply.getString("phone");
+                this.email = reply.getString("email");
+            }
+            else {
+                throw new RuntimeException("Client not found");
+            }
+        }
+        catch(Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

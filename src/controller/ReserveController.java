@@ -5,8 +5,13 @@ import model.Table;
 import view.ReserveView;
 import model.Client;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Locale;
 
@@ -30,13 +35,11 @@ public class ReserveController extends AbstractController{
      * @param name client name
      * @param email client email
      * @param contact client contact number
-     * @param seats number of seats on the table
      * @param tableNo table number
-     * @param date date of reservation
-     * @param time time for reservation
+     * @param datetime datetime of reservation
      */
-    public void validate(String name, String email, String contact, int seats, int tableNo, LocalDate date, LocalTime time) {
-        if(name.isEmpty() || email.isEmpty() || contact.isEmpty() || seats == 0 || tableNo == 0 || date == null || time == null) {
+    public void validate(String name, String email, String contact, int tableNo, LocalDateTime datetime, String requests,) {
+        if(name.isEmpty() || email.isEmpty() || contact.isEmpty() || tableNo == 0 || datetime == null) {
             view.displayError("Please fill in all fields");
         }
         else if(name.matches(".*\\d.*")){ //regex checks if name contains numbers
@@ -48,28 +51,30 @@ public class ReserveController extends AbstractController{
         else if(contact.length() != 10) {
             view.displayError("Invalid contact number");
         }
-        else if(seats > 10) {
-            view.displayError("Maximum number of seats is 10");
-        }
         else if(tableNo > 10) {
             view.displayError("Maximum table number is 10");
         }
-        else if(date.isBefore(LocalDate.now())) {
-            view.displayError("Invalid date");
+        else if(datetime) {
+
+        }
+        else {
+            //save customer details first into client table
+            Client client = new Client(name, email, contact);
+            client.save();
+
+            client.load();
+
+            //save reservation details now
+            Reservation model = new Reservation(client.getId(),tableNo,  "");
+            model.save();
         }
     }
 
-    private boolean isAvailable() {
+    public void validateDatetime(LocalDateTime dt){
 
-        return false;
-    }
-
-    public void save() {
-        //model = new Reservation(new Client(name, email, contact), new Table(seats, tableNo), date, time);
-        model.save();
-        view.displaySuccess("Reservation made successfully");
 
     }
+
 
 
 

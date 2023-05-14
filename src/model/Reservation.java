@@ -12,71 +12,38 @@ import java.time.LocalTime;
  */
 public class Reservation {
 
+    private int clientId, tableId;
+    private LocalDateTime datetime;
+    private String requests, status;
 
-    private Client client;
-    private Table table;
-    private LocalDate date;
-    private LocalTime time;
-
-    public Reservation() {
-
-    }
-    public Reservation(Client client, Table table, LocalDate date, LocalTime time) {
-        this.client = client;
-        this.table = table;
-        this.date = date;
-        this.time = time;
+    public Reservation(int clientId, int tableId, LocalDateTime datetime, String requests) {
+        this.clientId = clientId;
+        this.tableId = tableId;
+        this.datetime = datetime;
+        this.requests = requests;
+        this.status = "pending";
     }
 
-    public Client getClient() {
-        return client;
+    public LocalDateTime getDateTime() {
+        return datetime;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
-    }
-
-    public void setTable(Table table) {
-        this.table = table;
-    }
-
-    public LocalDate getDate() {
-        return date;
-    }
-
-    public void setDate(LocalDate date) {
-        this.date = date;
-    }
-
-    public LocalTime getTime() {
-        return time;
-    }
-
-    public void setTime(LocalTime time) {
-        this.time = time;
-    }
-
-    public Table getTable() {
-        return table;
+    public String getRequests() {
+        return requests;
     }
 
     public void save() throws RuntimeException{
         try {
             DBConn db = new DBConn();
-            String query = "INSERT INTO reservation (client_id, table_id, date, time) VALUES (?, ?, ?, ?)";
-
-            //if this client doesn't exist in the database, add it to the client table
-            if(!client.exists()) {
-                client.save();
-            }
-
-            db.write(query, client.getId(), table.getId(), LocalDateTime.of(date, time));
-
+            String query = "INSERT INTO reservation (client_id, table_id, start_datetime, requests, status) VALUES (?, ?, ?, ?, ?)";
+            db.write(query, clientId, tableId, datetime, requests, status);
+            db.kill();
         }
         catch(RuntimeException e) {
             throw new RuntimeException(e.getMessage());
         }
 
     }
+
 
 }
