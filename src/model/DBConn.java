@@ -52,7 +52,6 @@ public class DBConn {
             }
 
             ResultSet result =  stmt.executeQuery();
-            stmt.close();
 
             return result;
 
