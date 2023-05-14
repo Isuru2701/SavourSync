@@ -59,4 +59,8 @@ public class Reservation {
         return table;
     }
 
+    public void save() {
+
+    }
+
 }
