@@ -36,9 +36,9 @@ public class ReserveController extends AbstractController{
      * @param email client email
      * @param contact client contact number
      * @param tableNo table number
-     * @param datetime datetime of reservation
+     * @param datetime datetime of reservation (yyyy-MM-dd HH:mm)
      */
-    public void validate(String name, String email, String contact, int tableNo, LocalDateTime datetime, String requests,) {
+    public void validate(String name, String email, String contact, int tableNo, String datetime, String requests) {
         if(name.isEmpty() || email.isEmpty() || contact.isEmpty() || tableNo == 0 || datetime == null) {
             view.displayError("Please fill in all fields");
         }
@@ -51,27 +51,41 @@ public class ReserveController extends AbstractController{
         else if(contact.length() != 10) {
             view.displayError("Invalid contact number");
         }
+
         else if(tableNo > 10) {
             view.displayError("Maximum table number is 10");
         }
-        else if(datetime) {
-
+        else if(!validateDatetime(datetime)) {
+            view.displayError("Invalid date and time format");
         }
         else {
             //save customer details first into client table
-            Client client = new Client(name, email, contact);
+            Client client = new Client(name, contact, email);
             client.save();
 
-            client.load();
+            client.exists();
+
 
             //save reservation details now
-            Reservation model = new Reservation(client.getId(),tableNo,  "");
+            Reservation model = new Reservation(client.getId(),tableNo, datetime, requests);
             model.save();
         }
+
     }
 
-    public void validateDatetime(LocalDateTime dt){
-
+    /**
+     * validates the datetime format
+     * @param dt datetime (yyyy-MM-dd HH:mm)
+     * @return true if valid, false otherwise
+     */
+    private boolean validateDatetime(String dt){
+        try {
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+            format.parse(dt);
+            return true;
+        } catch (ParseException e) {
+            return false;
+        }
 
     }
 

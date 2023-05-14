@@ -13,10 +13,9 @@ import java.time.LocalTime;
 public class Reservation {
 
     private int clientId, tableId;
-    private LocalDateTime datetime;
-    private String requests, status;
+    private String requests,datetime, status;
 
-    public Reservation(int clientId, int tableId, LocalDateTime datetime, String requests) {
+    public Reservation(int clientId, int tableId, String datetime, String requests) {
         this.clientId = clientId;
         this.tableId = tableId;
         this.datetime = datetime;
@@ -24,7 +23,7 @@ public class Reservation {
         this.status = "pending";
     }
 
-    public LocalDateTime getDateTime() {
+    public String getDateTime() {
         return datetime;
     }
 

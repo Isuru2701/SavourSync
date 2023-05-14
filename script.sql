@@ -6,6 +6,7 @@ create table Client (
                         id int not null auto_increment,
                         name varchar(255) not null,
                         email varchar(255) not null,
+                        phone int not null,
                         primary key (id)
 );
 

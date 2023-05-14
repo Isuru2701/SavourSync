@@ -77,7 +77,9 @@ public class Client {
         try{
             DBConn db = new DBConn();
             String query = "INSERT INTO client (name, phone, email) VALUES (?, ?, ?)";
-            db.write(query, name, phone, email);
+            if(!exists()) {
+                db.write(query, name, phone, email);
+            }
 
         }
         catch(Exception e) {
@@ -85,22 +87,4 @@ public class Client {
         }
     }
 
-    public void load() throws RuntimeException {
-        try {
-            DBConn db = new DBConn();
-            String query = "SELECT * FROM client WHERE id = ?";
-            ResultSet reply = db.query(query, id);
-            if(reply.next()) {
-                this.name = reply.getString("name");
-                this.phone = reply.getString("phone");
-                this.email = reply.getString("email");
-            }
-            else {
-                throw new RuntimeException("Client not found");
-            }
-        }
-        catch(Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
 }

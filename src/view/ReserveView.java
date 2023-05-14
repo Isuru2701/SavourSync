@@ -8,11 +8,14 @@ import controller.ReserveController;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 
 import java.time.Month;
 import java.time.Year;
 
+import model.Reservation;
 import model.Table;
 
 public class ReserveView extends AbstractView {
@@ -36,8 +39,6 @@ public class ReserveView extends AbstractView {
         label4 = new JLabel();
         phoneField = new JTextField();
         label5 = new JLabel();
-        label6 = new JLabel();
-        seatsField = new JTextField();
         label7 = new JLabel();
         scrollPane1 = new JScrollPane();
         requestsArea = new JTextArea();
@@ -47,64 +48,56 @@ public class ReserveView extends AbstractView {
         label11 = new JLabel();
         hourBox = new JComboBox();
         minuteBox = new JComboBox();
-        meridianButton = new JToggleButton();
         tableBox = new JComboBox();
         monthBox = new JComboBox();
         dayBox = new JComboBox();
 
         //======== this ========
         setPreferredSize(new Dimension(1000, 750));
-        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing
-        .border.EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border.TitledBorder
-        .CENTER,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.
-        awt.Font.BOLD,12),java.awt.Color.red), getBorder()))
-        ; addPropertyChangeListener(new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
-        ){if("bord\u0065r".equals(e.getPropertyName()))throw new RuntimeException();}})
-        ;
+        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax
+        . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing
+        .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .
+        Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red
+        ) , getBorder () ) );  addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override
+        public void propertyChange (java . beans. PropertyChangeEvent e) { if( "bord\u0065r" .equals ( e. getPropertyName (
+        ) ) )throw new RuntimeException( ) ;} } );
         setLayout(null);
 
         //---- label1 ----
         label1.setText("Place Reservation");
         label1.setPreferredSize(new Dimension(150, 16));
+        label1.setFont(new Font("Segoe UI", Font.BOLD, 16));
         add(label1);
-        label1.setBounds(new Rectangle(new Point(25, 30), label1.getPreferredSize()));
+        label1.setBounds(25, 30, 190, 45);
         add(nameField);
-        nameField.setBounds(165, 75, 155, 50);
+        nameField.setBounds(165, 110, 155, 50);
 
         //---- label2 ----
         label2.setText("Name");
         add(label2);
-        label2.setBounds(35, 75, 55, 50);
+        label2.setBounds(35, 110, 55, 50);
 
         //---- label3 ----
         label3.setText("Email");
         label3.setPreferredSize(new Dimension(100, 16));
         add(label3);
-        label3.setBounds(35, 130, 125, 50);
+        label3.setBounds(35, 165, 125, 50);
         add(emailField);
-        emailField.setBounds(165, 135, 155, 50);
+        emailField.setBounds(165, 170, 155, 50);
 
         //---- label4 ----
         label4.setText("Contact No.");
         label4.setPreferredSize(new Dimension(100, 16));
         add(label4);
-        label4.setBounds(35, 200, 125, 50);
+        label4.setBounds(35, 235, 125, 50);
         add(phoneField);
-        phoneField.setBounds(165, 205, 155, 50);
+        phoneField.setBounds(165, 240, 155, 50);
 
         //---- label5 ----
         label5.setText("Table Number");
         label5.setPreferredSize(new Dimension(100, 16));
         add(label5);
         label5.setBounds(390, 60, 110, 50);
-
-        //---- label6 ----
-        label6.setText("Seats");
-        label6.setPreferredSize(new Dimension(100, 16));
-        add(label6);
-        label6.setBounds(35, 265, 125, 50);
-        add(seatsField);
-        seatsField.setBounds(165, 270, 155, 50);
 
         //---- label7 ----
         label7.setText("Additional Requests");
@@ -139,11 +132,6 @@ public class ReserveView extends AbstractView {
         hourBox.setBounds(380, 275, 130, 55);
         add(minuteBox);
         minuteBox.setBounds(515, 275, 130, 55);
-
-        //---- meridianButton ----
-        meridianButton.setText("text");
-        add(meridianButton);
-        meridianButton.setBounds(650, 275, 105, 55);
         add(tableBox);
         tableBox.setBounds(510, 65, 125, 45);
         add(monthBox);
@@ -166,6 +154,18 @@ public class ReserveView extends AbstractView {
             setPreferredSize(preferredSize);
         }
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
+
+        submitButton.addActionListener(e -> {
+
+            try {
+                String datetime = yearBox.getSelectedItem().toString() + "-" + (monthBox.getSelectedIndex() + 1) + "-" + dayBox.getSelectedItem().toString() + " " + hourBox.getSelectedItem().toString() + ":" + minuteBox.getSelectedItem().toString();
+
+                controller.validate(nameField.getText(), emailField.getText(), phoneField.getText(), Integer.parseInt(tableBox.getSelectedItem().toString()), datetime, requestsArea.getText());
+            }
+            catch (Exception ex) {
+                displayError(ex.getMessage());
+            }
+        });
     }
 
     //used to fill the comboBoxes with appropriate data
@@ -186,7 +186,7 @@ public class ReserveView extends AbstractView {
         }
 
         //hours
-        for(int i = 1; i <= 12; ++i) {
+        for(int i = 0; i <= 23; ++i) {
             hourBox.addItem(i);
         }
 
@@ -196,6 +196,8 @@ public class ReserveView extends AbstractView {
         }
 
         //getting and plugging in AVAILABLE tables' ids
+        //add a null value first
+        tableBox.addItem(null);
         List<Integer> available = Table.getAvailable();
         if (!available.isEmpty()) {
             for (int i : Table.getAvailable()) {
@@ -218,8 +220,6 @@ public class ReserveView extends AbstractView {
     private JLabel label4;
     private JTextField phoneField;
     private JLabel label5;
-    private JLabel label6;
-    private JTextField seatsField;
     private JLabel label7;
     private JScrollPane scrollPane1;
     private JTextArea requestsArea;
@@ -229,7 +229,6 @@ public class ReserveView extends AbstractView {
     private JLabel label11;
     private JComboBox hourBox;
     private JComboBox minuteBox;
-    private JToggleButton meridianButton;
     private JComboBox tableBox;
     private JComboBox monthBox;
     private JComboBox dayBox;
