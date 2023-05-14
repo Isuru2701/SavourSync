@@ -8,12 +8,8 @@ import model.Client;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
-import java.util.Locale;
 
 /**
  * Controller for ReserveView
@@ -45,15 +41,19 @@ public class ReserveController extends AbstractController{
         else if(name.matches(".*\\d.*")){ //regex checks if name contains numbers
             view.displayError("Name cannot contain numbers");
         }
-        else if(!email.contains("@")) {
+        else if(!email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
             view.displayError("Invalid email");
         }
-        else if(contact.length() != 10) {
+        else if(contact.matches("^[0-9]{10}$")) {
             view.displayError("Invalid contact number");
         }
         else if(!validateDatetime(datetime)) {
             view.displayError("Invalid date and time format");
         }
+        else if(datePassed(datetime)) {
+            view.displayError("Date and time has passed. Please select a valida date and time in the future");
+        }
+
         else {
             //save customer details first into client table
             Client client = new Client(name, contact, email);
@@ -84,6 +84,17 @@ public class ReserveController extends AbstractController{
             return false;
         }
 
+    }
+
+    public boolean datePassed(String dt) {
+        try {
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+            Date date = format.parse(dt);
+            Date now = new Date();
+            return date.compareTo(now) < 0;
+        } catch (ParseException e) {
+            return false;
+        }
     }
 
 
