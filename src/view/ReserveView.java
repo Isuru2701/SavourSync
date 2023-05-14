@@ -160,7 +160,7 @@ public class ReserveView extends AbstractView {
             try {
                 String datetime = yearBox.getSelectedItem().toString() + "-" + (monthBox.getSelectedIndex() + 1) + "-" + dayBox.getSelectedItem().toString() + " " + hourBox.getSelectedItem().toString() + ":" + minuteBox.getSelectedItem().toString();
 
-                controller.validate(nameField.getText(), emailField.getText(), phoneField.getText(), Integer.parseInt(tableBox.getSelectedItem().toString()), datetime, requestsArea.getText());
+                controller.validate(nameField.getText(), emailField.getText(), phoneField.getText(), tableBox.getSelectedItem().toString(), datetime, requestsArea.getText());
             }
             catch (Exception ex) {
                 displayError(ex.getMessage());
@@ -196,8 +196,8 @@ public class ReserveView extends AbstractView {
         }
 
         //getting and plugging in AVAILABLE tables' ids
-        //add a null value first
-        tableBox.addItem(null);
+        //add a empty value first
+        tableBox.addItem("");
         List<Integer> available = Table.getAvailable();
         if (!available.isEmpty()) {
             for (int i : Table.getAvailable()) {
