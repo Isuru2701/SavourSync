@@ -1,6 +1,8 @@
 package model;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Class Table
@@ -100,6 +102,30 @@ public class Table {
         }
         catch(Exception e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * gets the ids of all available tables (available = true)
+     * @return array of available table ids
+     * @throws RuntimeException
+     */
+    public List<Integer> getAvailable() throws RuntimeException {
+        try {
+            List<Integer> ids = new ArrayList<Integer>();
+            DBConn db = new DBConn();
+            String query = "SELECT id FROM `table` where available = True";
+            ResultSet reply = db.query(query);
+            while(reply.next()) {
+                ids.add(reply.getInt("id"));
+            }
+
+            return ids;
+
+
+        }
+        catch(Exception e) {
+            throw new RuntimeException();
         }
     }
 

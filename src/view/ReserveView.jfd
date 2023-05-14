@@ -15,7 +15,7 @@ new FormModel {
 				"y": 30
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textField1"
+				name: "nameField"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 165
 				"y": 75
@@ -42,7 +42,7 @@ new FormModel {
 				"height": 50
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textField2"
+				name: "emailField"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 165
 				"y": 135
@@ -60,7 +60,7 @@ new FormModel {
 				"height": 50
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textField3"
+				name: "phoneField"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 165
 				"y": 205
@@ -88,7 +88,7 @@ new FormModel {
 				"height": 50
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
-				name: "textField4"
+				name: "seatsField"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 165
 				"y": 270
@@ -108,7 +108,7 @@ new FormModel {
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane1"
 				add( new FormComponent( "javax.swing.JTextArea" ) {
-					name: "textArea1"
+					name: "requestsArea"
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 30
@@ -117,7 +117,7 @@ new FormModel {
 				"height": 140
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "button1"
+				name: "submitButton"
 				"text": "Submit"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 590
@@ -126,7 +126,7 @@ new FormModel {
 				"height": 62
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "button2"
+				name: "clearButton"
 				"text": "Clear All"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 590
@@ -144,7 +144,7 @@ new FormModel {
 				"height": 40
 			} )
 			add( new FormComponent( "javax.swing.JComboBox" ) {
-				name: "comboBox3"
+				name: "yearBox"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 125
 				"height": 45
@@ -161,7 +161,7 @@ new FormModel {
 				"height": 50
 			} )
 			add( new FormComponent( "javax.swing.JComboBox" ) {
-				name: "comboBox4"
+				name: "hourBox"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 380
 				"y": 275
@@ -169,7 +169,7 @@ new FormModel {
 				"height": 55
 			} )
 			add( new FormComponent( "javax.swing.JComboBox" ) {
-				name: "comboBox5"
+				name: "minuteBox"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 515
 				"y": 275
@@ -177,7 +177,7 @@ new FormModel {
 				"height": 55
 			} )
 			add( new FormComponent( "javax.swing.JToggleButton" ) {
-				name: "toggleButton1"
+				name: "meridianButton"
 				"text": "text"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 650
@@ -186,7 +186,7 @@ new FormModel {
 				"height": 55
 			} )
 			add( new FormComponent( "javax.swing.JComboBox" ) {
-				name: "comboBox6"
+				name: "tableBox"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 510
 				"y": 65
@@ -194,7 +194,7 @@ new FormModel {
 				"height": 45
 			} )
 			add( new FormComponent( "javax.swing.JComboBox" ) {
-				name: "comboBox7"
+				name: "monthBox"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 125
 				"height": 45
@@ -202,7 +202,7 @@ new FormModel {
 				"y": 160
 			} )
 			add( new FormComponent( "javax.swing.JComboBox" ) {
-				name: "comboBox8"
+				name: "dayBox"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"width": 125
 				"height": 45
