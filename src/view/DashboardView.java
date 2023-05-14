@@ -18,32 +18,20 @@ public class DashboardView extends AbstractView {
     public void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner Evaluation license - isuru Yahampath
-        label1 = new JLabel();
-        label2 = new JLabel();
         label3 = new JLabel();
         tablesPanel = new JPanel();
+        capacityPanel = new JPanel();
 
         //======== this ========
         setPreferredSize(new Dimension(1000, 550));
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (
-        new javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e"
-        , javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
-        , new java .awt .Font ("D\u0069al\u006fg" ,java .awt .Font .BOLD ,12 )
-        , java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (
-        new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-        ) {if ("\u0062or\u0064er" .equals (e .getPropertyName () )) throw new RuntimeException( )
-        ; }} );
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
+        swing. border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border
+        . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog"
+        ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) , getBorder
+        ( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
+        .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException
+        ( ); }} );
         setLayout(null);
-
-        //---- label1 ----
-        label1.setText("SavourSync");
-        add(label1);
-        label1.setBounds(new Rectangle(new Point(50, 50), label1.getPreferredSize()));
-
-        //---- label2 ----
-        label2.setText("Current Capacity");
-        add(label2);
-        label2.setBounds(new Rectangle(new Point(400, 50), label2.getPreferredSize()));
 
         //---- label3 ----
         label3.setText("Reservations for today");
@@ -60,7 +48,19 @@ public class DashboardView extends AbstractView {
             ((GridBagLayout)tablesPanel.getLayout()).rowWeights = new double[] {1.0, 1.0E-4};
         }
         add(tablesPanel);
-        tablesPanel.setBounds(-65, 105, 700, 700);
+        tablesPanel.setBounds(0, 215, 580, 335);
+
+        //======== capacityPanel ========
+        {
+            capacityPanel.setPreferredSize(new Dimension(350, 450));
+            capacityPanel.setLayout(new GridBagLayout());
+            ((GridBagLayout)capacityPanel.getLayout()).columnWidths = new int[] {0, 0};
+            ((GridBagLayout)capacityPanel.getLayout()).rowHeights = new int[] {0, 0};
+            ((GridBagLayout)capacityPanel.getLayout()).columnWeights = new double[] {1.0, 1.0E-4};
+            ((GridBagLayout)capacityPanel.getLayout()).rowWeights = new double[] {1.0, 1.0E-4};
+        }
+        add(capacityPanel);
+        capacityPanel.setBounds(5, 0, 430, 215);
 
         {
             // compute preferred size
@@ -78,14 +78,15 @@ public class DashboardView extends AbstractView {
         }
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
         tablesPanel.add(new TableForm());
-
+//        capacityPanel.add(new JLabel("testing"));
+        capacityPanel.add(new CapacityView());
+    
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     // Generated using JFormDesigner Evaluation license - isuru Yahampath
-    private JLabel label1;
-    private JLabel label2;
     private JLabel label3;
     private JPanel tablesPanel;
+    private JPanel capacityPanel;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }

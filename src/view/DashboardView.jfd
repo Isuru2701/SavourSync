@@ -7,20 +7,6 @@ new FormModel {
 			name: "this"
 			"preferredSize": new java.awt.Dimension( 1000, 550 )
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label1"
-				"text": "SavourSync"
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 50
-				"y": 50
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label2"
-				"text": "Current Capacity"
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 400
-				"y": 50
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label3"
 				"text": "Reservations for today"
 				"preferredSize": new java.awt.Dimension( 130, 16 )
@@ -38,13 +24,29 @@ new FormModel {
 			} ) {
 				name: "tablesPanel"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": -65
-				"y": 105
-				"height": 700
-				"width": 700
+				"x": 0
+				"y": 215
+				"height": 335
+				"width": 580
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+				"$columnSpecs": "0:1.0"
+				"$rowSpecs": "0:1.0"
+				"$hGap": 5
+				"$vGap": 5
+				"$alignTop": true
+				"$alignLeft": true
+			} ) {
+				name: "capacityPanel"
+				"preferredSize": new java.awt.Dimension( 350, 450 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
+				"x": 5
+				"y": 0
+				"width": 430
+				"height": 215
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 0, 0 )
+			"location": new java.awt.Point( 5, 0 )
 			"size": new java.awt.Dimension( 1000, 550 )
 		} )
 	}

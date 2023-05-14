@@ -12,7 +12,7 @@ import javax.swing.*;
 /**
  * @author ASUS
  */
-public class TableForm extends JPanel {
+public class TableForm extends AbstractView {
 
     private TableController controller;
     public TableForm() {
@@ -20,7 +20,7 @@ public class TableForm extends JPanel {
         controller = new TableController(this);
     }
 
-    private void initComponents() {
+    public void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner Evaluation license - isuru Yahampath
         label1 = new JLabel();
