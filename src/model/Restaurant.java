@@ -1,5 +1,8 @@
 package model;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  *
  * used to hold data related to the restaurant currently.
@@ -10,21 +13,38 @@ package model;
  */
 public class Restaurant {
 
+    public static int capacity,occupancy;
+
+    public static void setCapacity() {
+        DBConn db = new DBConn();
+        ResultSet reply =  db.query("Select seats from `table`");
+        try{
+            while(reply.next()){
+                Restaurant.capacity += reply.getInt("seats");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
     public static int getCapacity() {
         return capacity;
     }
 
-    public static void setCapacity(int capacity) {
-        Restaurant.capacity = capacity;
+    public static void setOccupancy() {
+        DBConn db = new DBConn();
+        ResultSet reply =  db.query("Select seats from `table` where occupied = 1");
+        try{
+            while(reply.next()){
+                Restaurant.occupancy += reply.getInt("seats");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static int getOccupancy() {
+        setOccupancy();
         return occupancy;
     }
 
-    public static void setOccupancy(int occupancy) {
-        Restaurant.occupancy = occupancy;
-    }
-
-    public static int capacity,occupancy;
 }
