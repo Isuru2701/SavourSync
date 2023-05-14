@@ -35,21 +35,29 @@ public class ReserveController extends AbstractController{
      * @param datetime datetime of reservation (yyyy-MM-dd HH:mm)
      */
     public void validate(String name, String email, String contact, String tableNo, String datetime, String requests) {
+        //empty check
         if(name.isEmpty() || email.isEmpty() || contact.isEmpty() || tableNo == "" || datetime == null) {
             view.displayError("Please fill in all fields");
         }
+        //name has numbers?
         else if(name.matches(".*\\d.*")){ //regex checks if name contains numbers
             view.displayError("Name cannot contain numbers");
         }
+
+        //email w/ email regex
         else if(!email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
             view.displayError("Invalid email");
         }
-        else if(contact.matches("^[0-9]{10}$")) {
+        //contact number, 10 digits, numbers only
+        else if(contact.length() != 10 || !contact.matches(".*\\d.*")) {
             view.displayError("Invalid contact number");
         }
+
+        //validate date and time
         else if(!validateDatetime(datetime)) {
             view.displayError("Invalid date and time format");
         }
+        //check if the date and time has already passed?
         else if(datePassed(datetime)) {
             view.displayError("Date and time has passed. Please select a valida date and time in the future");
         }
