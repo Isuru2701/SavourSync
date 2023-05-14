@@ -1,9 +1,6 @@
 package model;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 /**
  * Class DBConn
@@ -19,6 +16,9 @@ public class DBConn {
     String uname = "root";
     String passwd = "";
     Connection con;
+
+    //all methods throw RunTimeExceptions if there are any errors.
+    //These must be caught at the higher level, and errors displayed appropriately by the controllers/views.
     public DBConn() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -34,25 +34,61 @@ public class DBConn {
 
     }
 
-    public ResultSet query(String query) {
+    /**
+     * Executes a query and returns the result set
+     * @param query : the query as a PREPARED STATEMENT
+     * @param params : the parameters
+     * @return
+     */
+    public ResultSet query(String query, Object... params) {
         try {
-            return con.createStatement().executeQuery(query);
+            //using prepared statement to prevent sql injection
+            PreparedStatement stmt = con.prepareStatement(query);
+
+            for (int i = 0; i < params.length; i++) {
+                //starting at i + 1 because the first parameter is 1
+                stmt.setObject(i+1, params[i]);
+            }
+
+            ResultSet result =  stmt.executeQuery();
+            stmt.close();
+
+            return result;
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public void write(String nonQuery) {
+    /**
+     * Executes a write operation
+     * @param nonQuery : the write operation as a PREPARED STATEMENT
+     * @param params : the parameters
+     */
+    public void write(String nonQuery, Object... params) {
         try {
-            con.createStatement().execute(nonQuery);
+            PreparedStatement stmt = con.prepareStatement(nonQuery);
+
+            for (int i = 0; i < params.length; i++) {
+                //starting at i + 1 because the first parameter is 1
+                stmt.setObject(i+1, params[i]);
+            }
+
+            stmt.executeUpdate();
+            stmt.close();
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public void update(String nonQuery) {
+    /**
+     * Dispose the connection
+     * Call when done with using the object
+     */
+    public void kill() {
         try {
-            con.createStatement().executeUpdate(nonQuery);
+            con.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
