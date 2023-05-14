@@ -16,13 +16,9 @@ public class TableController {
 
     public void add(int seats){
         model = new Table(seats);
-        if(model.exists()) {
-            JOptionPane.showMessageDialog(null, "Table already exists", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-        else {
+
             model.save();
             JOptionPane.showMessageDialog(null, "Table added successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
-        }
     }
 
 }

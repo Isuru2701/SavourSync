@@ -19,8 +19,8 @@ new FormModel {
 				name: "label2"
 				"text": "Add a table"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 15
-				"y": 455
+				"x": 10
+				"y": 350
 				"width": 110
 				"height": 36
 			} )
@@ -28,16 +28,16 @@ new FormModel {
 				name: "label3"
 				"text": "Number of seats"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 115
-				"y": 455
+				"x": 110
+				"y": 350
 				"width": 122
 				"height": 41
 			} )
 			add( new FormComponent( "javax.swing.JTextField" ) {
 				name: "seatsField"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 215
-				"y": 455
+				"x": 210
+				"y": 350
 				"width": 89
 				"height": 42
 			} )
@@ -50,14 +50,14 @@ new FormModel {
 				"x": 10
 				"y": 70
 				"width": 100
-				"height": 360
+				"height": 265
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "addButton"
 				"text": "Add"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 310
-				"y": 455
+				"x": 305
+				"y": 350
 				"width": 97
 				"height": 42
 			} )
@@ -70,7 +70,7 @@ new FormModel {
 				"x": 120
 				"y": 70
 				"width": 100
-				"height": 360
+				"height": 265
 			} )
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane3"
@@ -81,7 +81,7 @@ new FormModel {
 				"x": 230
 				"y": 70
 				"width": 100
-				"height": 360
+				"height": 265
 			} )
 			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
 				name: "scrollPane4"
@@ -92,7 +92,7 @@ new FormModel {
 				"x": 340
 				"y": 70
 				"width": 100
-				"height": 360
+				"height": 265
 			} )
 			add( new FormComponent( "javax.swing.JButton" ) {
 				name: "refreshButton"
@@ -103,7 +103,7 @@ new FormModel {
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 665, 525 )
+			"size": new java.awt.Dimension( 665, 450 )
 		} )
 	}
 }

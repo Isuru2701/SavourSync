@@ -25,14 +25,6 @@ public class ReserveController extends AbstractController{
         this.view = view;
     }
 
-    public void determineClient(String name, String email, String contact) {
-        Client client = new Client(name, email, contact);
-
-    }
-    public void determineTable(int id) {
-        Table table = new Table(id);
-    }
-
     /**
      * validates the reservation form
      * @param name client name

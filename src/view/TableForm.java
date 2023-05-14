@@ -4,6 +4,8 @@
 
 package view;
 
+import controller.TableController;
+
 import java.awt.*;
 import javax.swing.*;
 
@@ -11,8 +13,11 @@ import javax.swing.*;
  * @author ASUS
  */
 public class TableForm extends JPanel {
+
+    private TableController controller;
     public TableForm() {
         initComponents();
+        controller = new TableController(this);
     }
 
     private void initComponents() {
@@ -35,12 +40,11 @@ public class TableForm extends JPanel {
 
         //======== this ========
         setPreferredSize(new Dimension(500, 500));
-        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.
-        border.EmptyBorder(0,0,0,0), "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e",javax.swing.border.TitledBorder.CENTER
-        ,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dialo\u0067",java.awt.Font
-        .BOLD,12),java.awt.Color.red), getBorder())); addPropertyChangeListener(
-        new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("borde\u0072"
-        .equals(e.getPropertyName()))throw new RuntimeException();}});
+        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder ( 0
+        , 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM
+        , new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,
+         getBorder () ) );  addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
+        ) { if( "bord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
         setLayout(null);
 
         //---- label1 ----
@@ -51,47 +55,47 @@ public class TableForm extends JPanel {
         //---- label2 ----
         label2.setText("Add a table");
         add(label2);
-        label2.setBounds(15, 455, 110, 36);
+        label2.setBounds(10, 350, 110, 36);
 
         //---- label3 ----
         label3.setText("Number of seats");
         add(label3);
-        label3.setBounds(115, 455, 122, 41);
+        label3.setBounds(110, 350, 122, 41);
         add(seatsField);
-        seatsField.setBounds(215, 455, 89, 42);
+        seatsField.setBounds(210, 350, 89, 42);
 
         //======== scrollPane1 ========
         {
             scrollPane1.setViewportView(idList);
         }
         add(scrollPane1);
-        scrollPane1.setBounds(10, 70, 100, 360);
+        scrollPane1.setBounds(10, 70, 100, 265);
 
         //---- addButton ----
         addButton.setText("Add");
         add(addButton);
-        addButton.setBounds(310, 455, 97, 42);
+        addButton.setBounds(305, 350, 97, 42);
 
         //======== scrollPane2 ========
         {
             scrollPane2.setViewportView(seatsList);
         }
         add(scrollPane2);
-        scrollPane2.setBounds(120, 70, 100, 360);
+        scrollPane2.setBounds(120, 70, 100, 265);
 
         //======== scrollPane3 ========
         {
             scrollPane3.setViewportView(availableList);
         }
         add(scrollPane3);
-        scrollPane3.setBounds(230, 70, 100, 360);
+        scrollPane3.setBounds(230, 70, 100, 265);
 
         //======== scrollPane4 ========
         {
             scrollPane4.setViewportView(deleteButton);
         }
         add(scrollPane4);
-        scrollPane4.setBounds(340, 70, 100, 360);
+        scrollPane4.setBounds(340, 70, 100, 265);
 
         //---- refreshButton ----
         refreshButton.setText("Refresh");
@@ -113,6 +117,23 @@ public class TableForm extends JPanel {
             setPreferredSize(preferredSize);
         }
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
+
+
+        //button for adding a table
+        addButton.addActionListener(e -> {
+            if(seatsField.getText().isEmpty()){
+                JOptionPane.showMessageDialog(this,"Please enter the number of seats");
+            }
+            else if (!seatsField.getText().matches(".*\\d.*")) {
+                    JOptionPane.showMessageDialog(this,"Please enter a valid number");
+
+            }
+            else {
+                int seats = Integer.parseInt(seatsField.getText());
+                controller.add(seats);
+            }
+        });
+
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off

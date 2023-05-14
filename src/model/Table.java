@@ -16,11 +16,7 @@ public class Table {
     private int seats, id;
     private boolean available;
 
-    public Table(int id) {
-        this.id = id;
-    }
-
-    public Table(int seats, int floorNo) {
+    public Table(int seats) {
         this.seats = seats;
 
         this.available = true;
@@ -49,8 +45,8 @@ public class Table {
     public void save() throws RuntimeException {
         try{
             DBConn db = new DBConn();
-            String query = "INSERT INTO table (seats, available) VALUES (?, false)";
-            db.write(query, seats);
+            String query = "INSERT INTO `table` (seats, available) VALUES (?, ?)";
+            db.write(query, seats, available);
 
         }
         catch(Exception e) {
