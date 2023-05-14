@@ -14,6 +14,11 @@ new FormModel {
 			"background": new java.awt.Color( 57, 57, 57, 255 )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
 				name: "navbarPanel"
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label1"
+					"text": "SavourSync    "
+					"font": new java.awt.Font( "Segoe UI", 1, 20 )
+				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "dashboardButton"
 					"text": "Dashboard"
@@ -36,7 +41,7 @@ new FormModel {
 					"preferredSize": new java.awt.Dimension( 150, 50 )
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
-			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) ) {
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
 				name: "contentPanel"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 				"gridy": 1
