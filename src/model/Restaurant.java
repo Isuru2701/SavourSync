@@ -28,6 +28,7 @@ public class Restaurant {
     private static final ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
     public static int capacity,occupancy;
     public static void init(){
+        capacity = 0; occupancy = 0;
         reservationSet = Reservation.getResultSet();
         setCapacity();
         setOccupancy();
@@ -66,6 +67,8 @@ public class Restaurant {
 
     public static void setCapacity() {
         DBConn db = new DBConn();
+
+        capacity = 0;
         ResultSet reply =  db.query("Select seats from `table`");
         try{
             while(reply.next()){
@@ -82,6 +85,8 @@ public class Restaurant {
 
     public static void setOccupancy() {
         DBConn db = new DBConn();
+
+        occupancy = 0;
         ResultSet reply =  db.query("Select seats from `table` where available = 0");
         try{
             while(reply.next()){

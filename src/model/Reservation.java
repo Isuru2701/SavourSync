@@ -31,7 +31,7 @@ public class Reservation {
         this.tableId = tableId;
         this.datetime = datetime;
         this.requests = requests;
-        this.status = "pending";
+        this.status = "PENDING";
     }
 
     /**
@@ -124,6 +124,10 @@ public class Reservation {
         }
     }
 
+    public String getStatus() {
+        return status;
+    }
+
     public void deleteReservation(int id) {
         try {
 
@@ -135,6 +139,7 @@ public class Reservation {
                 db.write(query, id);
 
                 query = "DELETE FROM reservation WHERE id = ? ;";
+                status = "CANCELED";
                 db.write(query, id);
             };
         } catch (Exception e) {

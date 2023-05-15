@@ -17,7 +17,7 @@ public class ReservationChecker extends TimerTask {
 
         // Iterate through reservations
         for (Reservation t : reservationList) {
-            if(t.getDateTime().isBefore(LocalDateTime.now())){
+            if(t.getDateTime().isBefore(LocalDateTime.now()) && t.getStatus().equals("PENDING")){
                 // Update reservation state
                 // Notify the user or update UI
                 t.setFulFilled();
@@ -25,7 +25,7 @@ public class ReservationChecker extends TimerTask {
             }
 
             //if an hour has passed
-            if(t.getDateTime().plusMinutes(1).isBefore(LocalDateTime.now())){
+            if(t.getDateTime().plusHours(1).isBefore(LocalDateTime.now())){
                 //set the table to available
                 Table.setAvailable(t.getTableId());
             }

@@ -40,14 +40,12 @@ public class CapacityView extends JPanel {
         setPreferredSize(new Dimension(350, 450));
         setBackground(new Color(0x1e1e1e));
         setBorder(null);
-        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder (
-        new javax . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  ""
-        , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM
-        , new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 )
-        ,java . awt. Color .red ) , getBorder () ) );  addPropertyChangeListener(
-        new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
-        ) { if( "\u0062ord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( )
-        ;} } );
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border.
+        EmptyBorder( 0, 0, 0, 0) , "", javax. swing. border. TitledBorder. CENTER, javax. swing
+        . border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ),
+        java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( )
+        { @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName () ))
+        throw new RuntimeException( ); }} );
         setLayout(new GridBagLayout());
         ((GridBagLayout)getLayout()).columnWidths = new int[] {0, 0, 0};
         ((GridBagLayout)getLayout()).rowHeights = new int[] {0, 0};
@@ -111,8 +109,10 @@ public class CapacityView extends JPanel {
         chart.getStyler().setLegendBackgroundColor(background);
         chart.getStyler().setChartFontColor(Color.white);
 
-        chart.getStyler().setLabelsVisible(false);
+        chart.getStyler().setLabelsVisible(true);
         chart.getStyler().setLabelType(PieStyler.LabelType.Value);
+        chart.getStyler().setLabelsFontColorAutomaticEnabled(false);
+        chart.getStyler().setLabelsFontColor(Color.white);
 
         chart.getStyler().setSeriesColors(new Color[]{
             new Color(135, 206, 250),
@@ -123,9 +123,8 @@ public class CapacityView extends JPanel {
         chart.getStyler().setDefaultSeriesRenderStyle(PieSeries.PieSeriesRenderStyle.Donut);
 
 
-        for (int i = 0; i < categories.length; i++) {
-            chart.addSeries(categories[i], values[i]);
-        }
+        chart.addSeries("Occupied", value);
+        chart.addSeries("Total", total);
         chartXChartPanel = new XChartPanel<>(chart);
         chartPanel.add(chartXChartPanel);
 
