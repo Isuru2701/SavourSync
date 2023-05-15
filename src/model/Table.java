@@ -109,4 +109,33 @@ public class Table {
         }
     }
 
+    public static List<Table> getAll() {
+        List<Table> all = new ArrayList<Table>();
+        DBConn db = new DBConn();
+        String query = "Select * from `table`";
+        ResultSet reply = db.query(query);
+        try {
+            while(reply.next()) {
+                Table t = new Table(reply.getInt("seats"));
+                t.id = reply.getInt("id");
+                t.available = reply.getBoolean("available");
+                all.add(t);
+            }
+        } catch(Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        return all;
+    }
+
+    public static void delete(int id) {
+        try {
+            DBConn db = new DBConn();
+            String query = "DELETE FROM `table` WHERE id = ?";
+            db.write(query, id);
+        } catch(Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

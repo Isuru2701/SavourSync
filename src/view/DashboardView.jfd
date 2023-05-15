@@ -25,8 +25,8 @@ new FormModel {
 				name: "tablesPanel"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 0
-				"y": 215
-				"height": 335
+				"y": 85
+				"height": 600
 				"width": 580
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {

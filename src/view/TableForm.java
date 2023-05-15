@@ -5,6 +5,7 @@
 package view;
 
 import controller.TableController;
+import model.Table;
 
 import java.awt.*;
 import javax.swing.*;
@@ -18,6 +19,7 @@ public class TableForm extends AbstractView {
     public TableForm() {
         initComponents();
         controller = new TableController(this);
+        populate();
     }
 
     public void initComponents() {
@@ -35,16 +37,19 @@ public class TableForm extends AbstractView {
         scrollPane3 = new JScrollPane();
         availableList = new JList();
         scrollPane4 = new JScrollPane();
-        deleteButton = new JList();
+        deleteButton = new JPanel();
         refreshButton = new JButton();
 
         //======== this ========
         setPreferredSize(new Dimension(500, 500));
-        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder ( 0
-        , 0 ,0 , 0) ,  "JFor\u006dDesi\u0067ner \u0045valu\u0061tion" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM
-        , new java. awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,
-         getBorder () ) );  addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
-        ) { if( "bord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (
+        new javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn"
+        , javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
+        , new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 )
+        , java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (
+        new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+        ) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
+        ; }} );
         setLayout(null);
 
         //---- label1 ----
@@ -92,6 +97,11 @@ public class TableForm extends AbstractView {
 
         //======== scrollPane4 ========
         {
+
+            //======== deleteButton ========
+            {
+                deleteButton.setLayout(new BoxLayout(deleteButton, BoxLayout.Y_AXIS));
+            }
             scrollPane4.setViewportView(deleteButton);
         }
         add(scrollPane4);
@@ -136,6 +146,28 @@ public class TableForm extends AbstractView {
 
     }
 
+    public void populate() {
+        DefaultListModel<Integer> ids = new DefaultListModel<>();
+        DefaultListModel<Integer> seats = new DefaultListModel<>();
+        DefaultListModel<String> availability = new DefaultListModel<>();
+
+        for(Table t : controller.getList()) {
+            ids.addElement(t.getId());
+            seats.addElement(t.getSeats());
+            availability.addElement(t.isAvailable() ? "Available" : "Not Available");
+
+            JButton button = new JButton("Delete");
+            button.addActionListener(e -> {
+                controller.delete(t.getId());
+            });
+
+            deleteButton.add(button);
+        }
+        idList.setModel(ids);
+        seatsList.setModel(seats);
+        availableList.setModel(availability);
+    }
+
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     // Generated using JFormDesigner Evaluation license - isuru Yahampath
     private JLabel label1;
@@ -150,7 +182,7 @@ public class TableForm extends AbstractView {
     private JScrollPane scrollPane3;
     private JList availableList;
     private JScrollPane scrollPane4;
-    private JList deleteButton;
+    private JPanel deleteButton;
     private JButton refreshButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }

@@ -12,7 +12,7 @@ public class TableController {
     private TableForm view;
     private Table model;
 
-    private List<Integer> available = new ArrayList<Integer>();
+    private List<Table> available = new ArrayList<Table>();
 
 
     public TableController(TableForm view){
@@ -26,8 +26,19 @@ public class TableController {
             JOptionPane.showMessageDialog(null, "Table added successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
     }
 
-    public void getList(){
-        available = Table.getAvailable();
+    public List<Table> getList(){
+        available = Table.getAll();
+        return available;
+    }
+
+    public void delete(int id){
+        try {
+            Table.delete(id);
+            view.displaySuccess("Table deleted successfully");
+        }
+        catch(Exception e) {
+            view.displayError("Deletion failed. Is there a reservation for this table?");
+        }
     }
 
 }
