@@ -4,13 +4,13 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
-			"$columnSpecs": "left:0:1.0"
+			"$columnSpecs": "left:400:1.0, 17:1.0"
 			"$rowSpecs": "0, 0:1.0"
 			"$alignTop": true
 			"$alignLeft": true
 		} ) {
 			name: "this"
-			"preferredSize": new java.awt.Dimension( 100, 700 )
+			"preferredSize": new java.awt.Dimension( 100, 800 )
 			"font": new java.awt.Font( "Segoe UI Black", 3, 20 )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) ) {
 				name: "panel1"
@@ -31,21 +31,24 @@ new FormModel {
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 				"hAlign": 4
 			} )
-			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
-				"$columnSpecs": "0"
-				"$rowSpecs": "0:1.0"
-				"$hGap": 5
-				"$vGap": 5
-				"$alignTop": true
-				"$alignLeft": true
-			} ) {
-				name: "contentPanel"
+			add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+				name: "scrollPane1"
+				add( new FormComponent( "javax.swing.JTable" ) {
+					name: "reservations"
+				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+				"gridy": 1
+				"hAlign": 5
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+				name: "buttonPanel"
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+				"gridx": 1
 				"gridy": 1
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 645, 390 )
+			"size": new java.awt.Dimension( 645, 560 )
 		} )
 	}
 }
