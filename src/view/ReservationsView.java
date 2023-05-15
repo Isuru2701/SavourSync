@@ -37,7 +37,7 @@ public class ReservationsView extends AbstractView {
         hSpacer1 = new JPanel(null);
         hSpacer2 = new JPanel(null);
         clockLabel = new JLabel();
-        label1 = new JLabel();
+        titleLabel = new JLabel();
         scrollPane1 = new JScrollPane();
         reservations = new JTable();
         panel3 = new JPanel();
@@ -47,13 +47,13 @@ public class ReservationsView extends AbstractView {
         //======== this ========
         setPreferredSize(new Dimension(500, 800));
         setFont(new Font("Segoe UI Black", Font.BOLD | Font.ITALIC, 20));
-        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing
-        . border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e" , javax. swing .border . TitledBorder
-        . CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dialo\u0067", java .
-        awt . Font. BOLD ,12 ) ,java . awt. Color .red ) , getBorder () ) )
-        ;  addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
-        ) { if( "borde\u0072" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } )
-        ;
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
+        swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border
+        . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069al\u006fg"
+        ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) , getBorder
+        ( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
+        .beans .PropertyChangeEvent e) {if ("\u0062or\u0064er" .equals (e .getPropertyName () )) throw new RuntimeException
+        ( ); }} );
         setLayout(new GridBagLayout());
         ((GridBagLayout)getLayout()).columnWidths = new int[] {400, 0};
         ((GridBagLayout)getLayout()).rowHeights = new int[] {0, 0, 50, 0, 100, 0, 0};
@@ -78,10 +78,10 @@ public class ReservationsView extends AbstractView {
             GridBagConstraints.EAST, GridBagConstraints.VERTICAL,
             new Insets(0, 0, 0, 0), 0, 0));
 
-        //---- label1 ----
-        label1.setText("Today's Reservations");
-        label1.setFont(new Font("Segoe UI", Font.BOLD, 20));
-        add(label1, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0,
+        //---- titleLabel ----
+        titleLabel.setText("Today's Reservations");
+        titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 20));
+        add(titleLabel, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0,
             GridBagConstraints.WEST, GridBagConstraints.VERTICAL,
             new Insets(0, 0, 0, 0), 0, 0));
 
@@ -140,6 +140,7 @@ public class ReservationsView extends AbstractView {
         viewToggle.addActionListener(e-> {
             if(viewToggle.isSelected()) {
                 viewToggle.setText("Today's reservations");
+                titleLabel.setText("All Reservations");
                 DefaultTableModel model = controller.fetchAll();
                 if(model != null) {
                     reservations.setModel(model);
@@ -147,6 +148,7 @@ public class ReservationsView extends AbstractView {
             }
             else {
                 viewToggle.setText("All reservations");
+                titleLabel.setText("Today's Reservations");
                 DefaultTableModel model = controller.fetch();
                 if(model != null) {
                     reservations.setModel(model);
@@ -226,7 +228,7 @@ public class ReservationsView extends AbstractView {
     private JPanel hSpacer1;
     private JPanel hSpacer2;
     private JLabel clockLabel;
-    private JLabel label1;
+    private JLabel titleLabel;
     private JScrollPane scrollPane1;
     private JTable reservations;
     private JPanel panel3;

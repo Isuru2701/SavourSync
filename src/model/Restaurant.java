@@ -2,6 +2,8 @@ package model;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 
 /**
  *
@@ -14,6 +16,7 @@ import java.sql.SQLException;
 public class Restaurant {
 
     private static ResultSet reservationSet;
+    ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
     public static int capacity,occupancy;
     public static void init(){
         reservationSet = new Reservation().getResultSet();
@@ -26,7 +29,18 @@ public class Restaurant {
     //update the table under the reservation's available to false. Reset this after 1 hour has passed.
 
     public void setTimers(){
+        while(true) {
+            try {
+                if (!reservationSet.next()) break;
+                else {
+                    //yyyy-mm-dd HH:mm
+                    //long time = Long.parseLong(reservationSet.getString("start_datetime").substring());
+                }
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
 
+        }
 
 
         //get all reservations
