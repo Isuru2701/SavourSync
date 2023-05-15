@@ -184,5 +184,16 @@ public class Reservation {
         }
     }
 
+    public void setFulFilled(int id) {
+        try {
+            DBConn db = new DBConn();
+            String query = "UPDATE reservation SET status = 'FULFILLED' WHERE id = ?";
+            db.write(query, id);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            throw new RuntimeException();
+        }
+    }
+
 
 }

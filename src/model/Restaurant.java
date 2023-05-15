@@ -2,6 +2,13 @@ package model;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.format.DateTimeParseException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
@@ -16,29 +23,58 @@ import java.util.concurrent.ScheduledExecutorService;
 public class Restaurant {
 
     private static ResultSet reservationSet;
-    ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
+    private static final ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
     public static int capacity,occupancy;
     public static void init(){
         reservationSet = new Reservation().getResultSet();
         setCapacity();
         setOccupancy();
+        setTimers();
     }
 
     //gets all the reservations for the day
     //every time a reservation's time approaches, if the status is pending, it will be set to 'fulfilled'.
     //update the table under the reservation's available to false. Reset this after 1 hour has passed.
 
-    public void setTimers(){
+
+    /**
+     * called when: starting up for the first time, After a reservation is made
+     */
+    public static void setTimers(){
         while(true) {
             try {
                 if (!reservationSet.next()) break;
                 else {
-                    //yyyy-mm-dd HH:mm
-                    //long time = Long.parseLong(reservationSet.getString("start_datetime").substring());
+                    //formatter
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
+
+                    LocalDateTime time = LocalDateTime.parse(reservationSet.getString("start_datetime"), formatter);
+                    if(time.isAfter(LocalDateTime.now()) && time.isBefore(LocalDateTime.now().plusDays(1))) {
+                        //set executor
+
+                        long delay = Duration.between(LocalDateTime.now(), time).toMillis();
+
+                        executorService.schedule(() -> {
+                            //set reservation to fulfilled
+                            Reservation reservation = new Reservation();
+                            try {
+                                reservation.setFulFilled(reservationSet.getInt("id"));
+                            } catch (SQLException e) {
+                                throw new RuntimeException(e);
+                            }
+                            //set table to unavailable
+                            try {
+                                Table.setOccupied(reservationSet.getInt("table_id"));
+                            } catch (SQLException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }, delay, java.util.concurrent.TimeUnit.MILLISECONDS);
+                    }
                 }
-            } catch (SQLException e) {
+            } catch (SQLException | DateTimeParseException e) {
                 throw new RuntimeException(e);
             }
+
 
         }
 

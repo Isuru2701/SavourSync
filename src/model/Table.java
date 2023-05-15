@@ -139,7 +139,7 @@ public class Table {
         }
     }
 
-    public void setOccupied(){
+    public static void setOccupied(int id){
         try{
             DBConn db = new DBConn();
             String query = "UPDATE `table` SET available = ? WHERE id = ?";

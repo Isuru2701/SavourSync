@@ -1,6 +1,7 @@
 package controller;
 
 import model.Reservation;
+import model.Restaurant;
 import model.Table;
 import view.ReserveView;
 import model.Client;
@@ -79,6 +80,7 @@ public class ReserveController extends AbstractController{
             model = new Reservation(client.getId(),Integer.parseInt(tableNo), datetime, requests);
             model.save();
             view.displaySuccess("Reservation saved successfully");
+            Restaurant.setTimers();
         }
 
     }
