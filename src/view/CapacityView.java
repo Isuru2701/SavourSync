@@ -89,7 +89,7 @@ public class CapacityView extends JPanel {
         chartPanel.removeAll();
         //setting up the dataset, using xchart
         String[] categories = {"Occupied", "Total"};
-        int[] values = {(int) value, (int) total};
+        int[] values = { value, total};
 
         chart = new PieChartBuilder()
                 .width(350)
@@ -111,7 +111,7 @@ public class CapacityView extends JPanel {
         chart.getStyler().setLegendBackgroundColor(background);
         chart.getStyler().setChartFontColor(Color.white);
 
-        chart.getStyler().setLabelsVisible(true);
+        chart.getStyler().setLabelsVisible(false);
         chart.getStyler().setLabelType(PieStyler.LabelType.Value);
 
         chart.getStyler().setSeriesColors(new Color[]{
