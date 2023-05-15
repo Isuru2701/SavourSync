@@ -19,26 +19,19 @@ public class DashboardView extends AbstractView {
     public void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner Evaluation license - isuru Yahampath
-        label3 = new JLabel();
         tablesPanel = new JPanel();
         capacityPanel = new JPanel();
+        ganttPanel = new JPanel();
 
         //======== this ========
         setPreferredSize(new Dimension(1000, 600));
-        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new
-        javax.swing.border.EmptyBorder(0,0,0,0), "",javax
-        .swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java
-        .awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt
-        .Color.red), getBorder())); addPropertyChangeListener(new java.beans.
-        PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062ord\u0065r".
-        equals(e.getPropertyName()))throw new RuntimeException();}});
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
+        . EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER, javax
+        . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,
+        12 ), java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans
+        . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .equals (e .
+        getPropertyName () )) throw new RuntimeException( ); }} );
         setLayout(null);
-
-        //---- label3 ----
-        label3.setText("Reservations for today");
-        label3.setPreferredSize(new Dimension(130, 16));
-        add(label3);
-        label3.setBounds(new Rectangle(new Point(705, 95), label3.getPreferredSize()));
 
         //======== tablesPanel ========
         {
@@ -59,6 +52,14 @@ public class DashboardView extends AbstractView {
         }
         add(capacityPanel);
         capacityPanel.setBounds(0, -15, 515, 310);
+
+        //======== ganttPanel ========
+        {
+            ganttPanel.setPreferredSize(new Dimension(400, 500));
+            ganttPanel.setLayout(new BoxLayout(ganttPanel, BoxLayout.X_AXIS));
+        }
+        add(ganttPanel);
+        ganttPanel.setBounds(515, 0, 485, 550);
 
         {
             // compute preferred size
@@ -83,8 +84,8 @@ public class DashboardView extends AbstractView {
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     // Generated using JFormDesigner Evaluation license - isuru Yahampath
-    private JLabel label3;
     private JPanel tablesPanel;
     private JPanel capacityPanel;
+    private JPanel ganttPanel;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }
