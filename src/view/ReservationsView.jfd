@@ -4,8 +4,8 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
-			"$columnSpecs": "left:400:1.0, 17:1.0"
-			"$rowSpecs": "0, 0:1.0"
+			"$columnSpecs": "left:400:1.0"
+			"$rowSpecs": "0, 0:1.0, 0"
 			"$alignTop": true
 			"$alignLeft": true
 		} ) {
@@ -40,11 +40,11 @@ new FormModel {
 				"gridy": 1
 				"hAlign": 5
 			} )
-			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
-				name: "buttonPanel"
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "deleteButton"
+				"text": "Cancel Reservation"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
-				"gridx": 1
-				"gridy": 1
+				"gridy": 2
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )

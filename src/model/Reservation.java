@@ -39,6 +39,8 @@ public class Reservation {
             String query = "INSERT INTO reservation (client_id, table_id, start_datetime, requests, status) VALUES (?, ?, ?, ?, ?)";
             db.write(query, clientId, tableId, datetime, requests, status);
             db.kill();
+
+
         }
         catch(RuntimeException e) {
             throw new RuntimeException(e.getMessage());
