@@ -71,7 +71,7 @@ public class ReserveController extends AbstractController{
 
 
             //save reservation details now
-            Reservation model = new Reservation(client.getId(),Integer.parseInt(tableNo), datetime, requests);
+            model = new Reservation(client.getId(),Integer.parseInt(tableNo), datetime, requests);
             model.save();
             view.displaySuccess("Reservation saved successfully");
         }

@@ -198,11 +198,16 @@ public class ReserveView extends AbstractView {
         //getting and plugging in AVAILABLE tables' ids
         //add a empty value first
         tableBox.addItem("");
-        List<Integer> available = Table.getAvailable();
-        if (!available.isEmpty()) {
-            for (int i : Table.getAvailable()) {
-                tableBox.addItem(i);
+        try {
+            List<Integer> available = Table.getAvailable();
+            if (!available.isEmpty()) {
+                for (int i : Table.getAvailable()) {
+                    tableBox.addItem(i);
+                }
             }
+        }
+        catch (Exception e){
+            displayError("Error getting available tables. Is the database online?");
         }
 
 
