@@ -10,6 +10,7 @@ import model.Table;
 import java.awt.*;
 import javax.swing.*;
 
+
 /**
  * @author ASUS
  */
@@ -37,25 +38,25 @@ public class TableForm extends AbstractView {
         scrollPane3 = new JScrollPane();
         availableList = new JList();
         scrollPane4 = new JScrollPane();
-        deleteButton = new JPanel();
-        refreshButton = new JButton();
+        deleteButtons = new JPanel();
+        label4 = new JLabel();
+        label5 = new JLabel();
+        label6 = new JLabel();
 
         //======== this ========
         setPreferredSize(new Dimension(500, 500));
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (
-        new javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn"
-        , javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
-        , new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 )
-        , java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (
-        new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-        ) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
-        ; }} );
+        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border
+        .EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border.TitledBorder.CENTER,javax
+        .swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,
+        12),java.awt.Color.red), getBorder())); addPropertyChangeListener(new java.beans
+        .PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("bord\u0065r".equals(e.
+        getPropertyName()))throw new RuntimeException();}});
         setLayout(null);
 
         //---- label1 ----
         label1.setText("Manage Tables");
         add(label1);
-        label1.setBounds(15, 30, 130, 30);
+        label1.setBounds(15, 10, 130, 30);
 
         //---- label2 ----
         label2.setText("Add a table");
@@ -98,19 +99,29 @@ public class TableForm extends AbstractView {
         //======== scrollPane4 ========
         {
 
-            //======== deleteButton ========
+            //======== deleteButtons ========
             {
-                deleteButton.setLayout(new BoxLayout(deleteButton, BoxLayout.Y_AXIS));
+                deleteButtons.setLayout(new BoxLayout(deleteButtons, BoxLayout.Y_AXIS));
             }
-            scrollPane4.setViewportView(deleteButton);
+            scrollPane4.setViewportView(deleteButtons);
         }
         add(scrollPane4);
         scrollPane4.setBounds(340, 70, 100, 265);
 
-        //---- refreshButton ----
-        refreshButton.setText("Refresh");
-        add(refreshButton);
-        refreshButton.setBounds(new Rectangle(new Point(155, 35), refreshButton.getPreferredSize()));
+        //---- label4 ----
+        label4.setText("Table ID");
+        add(label4);
+        label4.setBounds(new Rectangle(new Point(15, 50), label4.getPreferredSize()));
+
+        //---- label5 ----
+        label5.setText("Seats");
+        add(label5);
+        label5.setBounds(new Rectangle(new Point(125, 50), label5.getPreferredSize()));
+
+        //---- label6 ----
+        label6.setText("Status");
+        add(label6);
+        label6.setBounds(new Rectangle(new Point(235, 50), label6.getPreferredSize()));
 
         {
             // compute preferred size
@@ -141,6 +152,9 @@ public class TableForm extends AbstractView {
             else {
                 int seats = Integer.parseInt(seatsField.getText());
                 controller.add(seats);
+                populate(); //acts as a refresh
+
+                
             }
         });
 
@@ -159,13 +173,18 @@ public class TableForm extends AbstractView {
             JButton button = new JButton("Delete");
             button.addActionListener(e -> {
                 controller.delete(t.getId());
+                JButton b = (JButton) e.getSource();
+                deleteButtons.remove(b);
+                populate();
             });
 
-            deleteButton.add(button);
+            deleteButtons.add(button);
         }
         idList.setModel(ids);
         seatsList.setModel(seats);
         availableList.setModel(availability);
+        deleteButtons.repaint();
+
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
@@ -182,7 +201,9 @@ public class TableForm extends AbstractView {
     private JScrollPane scrollPane3;
     private JList availableList;
     private JScrollPane scrollPane4;
-    private JPanel deleteButton;
-    private JButton refreshButton;
+    private JPanel deleteButtons;
+    private JLabel label4;
+    private JLabel label5;
+    private JLabel label6;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }

@@ -62,6 +62,11 @@ public class ReserveController extends AbstractController{
             view.displayError("Date and time has passed. Please select a valida date and time in the future");
         }
 
+        //check if this timeslot is already booked.
+        else if(Reservation.checkIfBooked(Integer.parseInt(tableNo), datetime)) {
+            view.displayError("This timeslot is already booked. Please select another timeslot");
+        }
+
         else {
             //save customer details first into client table
             Client client = new Client(name, contact, email);

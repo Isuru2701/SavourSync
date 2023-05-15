@@ -1,6 +1,8 @@
 package model;
 
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -42,6 +44,21 @@ public class Reservation {
             throw new RuntimeException(e.getMessage());
         }
 
+    }
+
+    public static boolean checkIfBooked(Integer no, String datetime) {
+        try{
+            DBConn db = new DBConn();
+            String query = "SELECT * FROM reservation WHERE table_id = ? AND start_datetime = ?";
+            ResultSet reply = db.query(query, no, datetime);
+            if(reply.next()) {
+                return true;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+
+        return false;
     }
 
 
