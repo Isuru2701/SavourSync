@@ -12,6 +12,8 @@ import controller.CapacityController;
 
 //chart imports
 import org.knowm.xchart.*;
+import org.knowm.xchart.style.PieStyler;
+
 /**
  * @author ASUS
  */
@@ -76,6 +78,7 @@ public class CapacityView extends JPanel {
                 .build();
 
 
+        //stylizing.
         chart.getStyler().setPlotContentSize(.9);
 
         Color background = new Color(30, 30, 30);
@@ -88,10 +91,16 @@ public class CapacityView extends JPanel {
         chart.getStyler().setLegendBackgroundColor(background);
         chart.getStyler().setChartFontColor(Color.white);
 
+        chart.getStyler().setLabelsVisible(false);
 
+        chart.getStyler().setSeriesColors(new Color[]{
+            new Color(135, 206, 250),
+            new Color(0, 122, 255)
+        });
 
         chart.getStyler().setPlotBorderColor(background);
         chart.getStyler().setDefaultSeriesRenderStyle(PieSeries.PieSeriesRenderStyle.Donut);
+
 
         for (int i = 0; i < categories.length; i++) {
             chart.addSeries(categories[i], values[i]);
