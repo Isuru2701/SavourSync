@@ -145,9 +145,6 @@ public class Table {
             String query = "UPDATE `table` SET available = ? WHERE id = ?";
             db.write(query, false, id);
 
-            //reservation updated to fulfilled
-            query = "UPDATE reservation SET status = ? WHERE table_id = ?";
-            db.write(query, "fulfilled", id);
             db.kill();
         } catch(Exception e) {
             throw new RuntimeException(e);

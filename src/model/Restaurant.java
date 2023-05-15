@@ -1,6 +1,5 @@
 package model;
 
-import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -14,15 +13,26 @@ import java.sql.SQLException;
  */
 public class Restaurant {
 
+    private static ResultSet reservationSet;
     public static int capacity,occupancy;
-    public void init(){
-        DefaultTableModel reservations = new DefaultTableModel();
-        reservations = new Reservation().getTableData();
+    public static void init(){
+        reservationSet = new Reservation().getResultSet();
         setCapacity();
         setOccupancy();
     }
 
+    //gets all the reservations for the day
+    //every time a reservation's time approaches, if the status is pending, it will be set to 'fulfilled'.
+    //update the table under the reservation's available to false. Reset this after 1 hour has passed.
+
     public void setTimers(){
+
+
+
+        //get all reservations
+        //for each reservation, set a timer for 1 hour
+        //when the timer is up, set the table to available
+        //if the reservation is not fulfilled, set it to fulfilled
 
     }
 

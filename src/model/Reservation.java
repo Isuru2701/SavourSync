@@ -172,5 +172,17 @@ public class Reservation {
         return model;
     }
 
+    public ResultSet getResultSet(){
+        try{
+            DBConn db = new DBConn();
+            String query = "SELECT * FROM reservation";
+            return db.query(query);
+
+        }
+        catch(Exception e){
+            throw new RuntimeException();
+        }
+    }
+
 
 }

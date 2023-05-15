@@ -1,5 +1,6 @@
 package controller;
 
+import model.Restaurant;
 import view.AbstractView;
 import view.App;
 public class AppController {
@@ -8,6 +9,7 @@ public class AppController {
 
     public AppController(App app) {
         this.app = app;
+        Restaurant.init();
 
     }
 
