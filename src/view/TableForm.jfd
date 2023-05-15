@@ -9,9 +9,10 @@ new FormModel {
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label1"
 				"text": "Manage Tables"
+				"font": new java.awt.Font( "Segoe UI", 1, 16 )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 15
-				"y": 10
+				"y": 0
 				"width": 130
 				"height": 30
 			} )
@@ -20,7 +21,7 @@ new FormModel {
 				"text": "Add a table"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 10
-				"y": 350
+				"y": 335
 				"width": 110
 				"height": 36
 			} )
@@ -29,7 +30,7 @@ new FormModel {
 				"text": "Number of seats"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 110
-				"y": 350
+				"y": 335
 				"width": 122
 				"height": 41
 			} )
@@ -37,7 +38,7 @@ new FormModel {
 				name: "seatsField"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 210
-				"y": 350
+				"y": 335
 				"width": 89
 				"height": 42
 			} )
@@ -48,7 +49,7 @@ new FormModel {
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 10
-				"y": 70
+				"y": 55
 				"width": 100
 				"height": 265
 			} )
@@ -57,7 +58,7 @@ new FormModel {
 				"text": "Add"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 305
-				"y": 350
+				"y": 335
 				"width": 97
 				"height": 42
 			} )
@@ -68,7 +69,7 @@ new FormModel {
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 120
-				"y": 70
+				"y": 55
 				"width": 100
 				"height": 265
 			} )
@@ -79,7 +80,7 @@ new FormModel {
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 230
-				"y": 70
+				"y": 55
 				"width": 100
 				"height": 265
 			} )
@@ -92,7 +93,7 @@ new FormModel {
 				} )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 340
-				"y": 70
+				"y": 55
 				"width": 100
 				"height": 265
 			} )
@@ -101,7 +102,7 @@ new FormModel {
 				"text": "Table ID"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 15
-				"y": 50
+				"y": 35
 				"width": 90
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -109,7 +110,7 @@ new FormModel {
 				"text": "Seats"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 125
-				"y": 50
+				"y": 35
 				"width": 75
 			} )
 			add( new FormComponent( "javax.swing.JLabel" ) {
@@ -117,7 +118,7 @@ new FormModel {
 				"text": "Status"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 235
-				"y": 50
+				"y": 35
 				"width": 80
 			} )
 		}, new FormLayoutConstraints( null ) {

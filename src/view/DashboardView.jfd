@@ -5,7 +5,7 @@ new FormModel {
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
 			name: "this"
-			"preferredSize": new java.awt.Dimension( 1000, 550 )
+			"preferredSize": new java.awt.Dimension( 1000, 600 )
 			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label3"
 				"text": "Reservations for today"
@@ -25,7 +25,7 @@ new FormModel {
 				name: "tablesPanel"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 0
-				"y": 270
+				"y": 275
 				"height": 380
 				"width": 535
 			} )

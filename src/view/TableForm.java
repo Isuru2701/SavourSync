@@ -45,57 +45,58 @@ public class TableForm extends AbstractView {
 
         //======== this ========
         setPreferredSize(new Dimension(500, 500));
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new
-        javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "", javax
-        . swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java
-        .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
-        . Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans.
-        PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .
-        equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax
+        . swing. border. EmptyBorder( 0, 0, 0, 0) , "", javax. swing
+        . border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .
+        Font ("D\u0069alog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red
+        ) , getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override
+        public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .getPropertyName (
+        ) )) throw new RuntimeException( ); }} );
         setLayout(null);
 
         //---- label1 ----
         label1.setText("Manage Tables");
+        label1.setFont(new Font("Segoe UI", Font.BOLD, 16));
         add(label1);
-        label1.setBounds(15, 10, 130, 30);
+        label1.setBounds(15, 0, 130, 30);
 
         //---- label2 ----
         label2.setText("Add a table");
         add(label2);
-        label2.setBounds(10, 350, 110, 36);
+        label2.setBounds(10, 335, 110, 36);
 
         //---- label3 ----
         label3.setText("Number of seats");
         add(label3);
-        label3.setBounds(110, 350, 122, 41);
+        label3.setBounds(110, 335, 122, 41);
         add(seatsField);
-        seatsField.setBounds(210, 350, 89, 42);
+        seatsField.setBounds(210, 335, 89, 42);
 
         //======== scrollPane1 ========
         {
             scrollPane1.setViewportView(idList);
         }
         add(scrollPane1);
-        scrollPane1.setBounds(10, 70, 100, 265);
+        scrollPane1.setBounds(10, 55, 100, 265);
 
         //---- addButton ----
         addButton.setText("Add");
         add(addButton);
-        addButton.setBounds(305, 350, 97, 42);
+        addButton.setBounds(305, 335, 97, 42);
 
         //======== scrollPane2 ========
         {
             scrollPane2.setViewportView(seatsList);
         }
         add(scrollPane2);
-        scrollPane2.setBounds(120, 70, 100, 265);
+        scrollPane2.setBounds(120, 55, 100, 265);
 
         //======== scrollPane3 ========
         {
             scrollPane3.setViewportView(availableList);
         }
         add(scrollPane3);
-        scrollPane3.setBounds(230, 70, 100, 265);
+        scrollPane3.setBounds(230, 55, 100, 265);
 
         //======== scrollPane4 ========
         {
@@ -107,22 +108,22 @@ public class TableForm extends AbstractView {
             scrollPane4.setViewportView(deleteButtons);
         }
         add(scrollPane4);
-        scrollPane4.setBounds(340, 70, 100, 265);
+        scrollPane4.setBounds(340, 55, 100, 265);
 
         //---- label4 ----
         label4.setText("Table ID");
         add(label4);
-        label4.setBounds(15, 50, 90, label4.getPreferredSize().height);
+        label4.setBounds(15, 35, 90, label4.getPreferredSize().height);
 
         //---- label5 ----
         label5.setText("Seats");
         add(label5);
-        label5.setBounds(125, 50, 75, label5.getPreferredSize().height);
+        label5.setBounds(125, 35, 75, label5.getPreferredSize().height);
 
         //---- label6 ----
         label6.setText("Status");
         add(label6);
-        label6.setBounds(235, 50, 80, label6.getPreferredSize().height);
+        label6.setBounds(235, 35, 80, label6.getPreferredSize().height);
 
         {
             // compute preferred size

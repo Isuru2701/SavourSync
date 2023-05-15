@@ -35,13 +35,13 @@ public class CapacityView extends JPanel {
         setPreferredSize(new Dimension(350, 450));
         setBackground(new Color(0x1e1e1e));
         setBorder(null);
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
-        swing. border. EmptyBorder( 0, 0, 0, 0) , "", javax. swing. border
-        . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069al\u006fg"
-        ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) , getBorder
-        ( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
-        .beans .PropertyChangeEvent e) {if ("\u0062or\u0064er" .equals (e .getPropertyName () )) throw new RuntimeException
-        ( ); }} );
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing
+        . border. EmptyBorder( 0, 0, 0, 0) , "", javax. swing. border. TitledBorder
+        . CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .
+        awt .Font .BOLD ,12 ), java. awt. Color. red) , getBorder( )) )
+        ;  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+        ) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} )
+        ;
         setLayout(new GridBagLayout());
         ((GridBagLayout)getLayout()).columnWidths = new int[] {0, 0};
         ((GridBagLayout)getLayout()).rowHeights = new int[] {0, 0};
@@ -72,7 +72,7 @@ public class CapacityView extends JPanel {
         PieChart chart = new PieChartBuilder()
                 .width(350)
                 .height(450)
-                .title("Capacity")
+                .title("")
                 .build();
 
 
