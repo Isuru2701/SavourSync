@@ -41,44 +41,6 @@ public class Restaurant {
      * called when: starting up for the first time, After a reservation is made
      */
     public static void setTimers(){
-        while(true) {
-            try {
-                if (!reservationSet.next()) break;
-                else {
-                    //formatter
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
-
-                    LocalDateTime time = LocalDateTime.parse(reservationSet.getString("start_datetime"), formatter);
-                    if(time.isAfter(LocalDateTime.now()) && time.isBefore(LocalDateTime.now().plusDays(1))) {
-                        //set executor
-
-                        long delay = Duration.between(LocalDateTime.now(), time).toMillis();
-
-                        executorService.schedule(() -> {
-                            //set reservation to fulfilled
-                            Reservation reservation = new Reservation();
-                            try {
-                                reservation.setFulFilled(reservationSet.getInt("id"));
-                            } catch (SQLException e) {
-                                throw new RuntimeException(e);
-                            }
-                            //set table to unavailable
-                            try {
-                                Table.setOccupied(reservationSet.getInt("table_id"));
-                            } catch (SQLException e) {
-                                throw new RuntimeException(e);
-                            }
-                        }, delay, java.util.concurrent.TimeUnit.MILLISECONDS);
-                    }
-                }
-            } catch (SQLException | DateTimeParseException e) {
-                throw new RuntimeException(e);
-            }
-
-
-        }
-
-
         //get all reservations
         //for each reservation, set a timer for 1 hour
         //when the timer is up, set the table to available
