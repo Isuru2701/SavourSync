@@ -138,4 +138,15 @@ public class Table {
         }
     }
 
+    public void setOccupied(){
+        try{
+            DBConn db = new DBConn();
+            String query = "UPDATE `table` SET available = ? WHERE id = ?";
+            db.write(query, false, id);
+            db.kill();
+        } catch(Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
