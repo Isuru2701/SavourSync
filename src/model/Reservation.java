@@ -10,6 +10,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Class Reservation
@@ -128,12 +129,14 @@ public class Reservation {
 
             DBConn db = new DBConn();
 
-            //add this reservation to canceled first.
-            String query = "INSERT INTO canceled (client_id, table_id, start_datetime) SELECT client_id, table_id, start_datetime FROM reservation WHERE id = ?;";
-            db.write(query, id);
+            if(status.equals("pending")) {
+                //add this reservation to canceled first.
+                String query = "INSERT INTO canceled (client_id, table_id, start_datetime) SELECT client_id, table_id, start_datetime FROM reservation WHERE id = ?;";
+                db.write(query, id);
 
-            query = "DELETE FROM reservation WHERE id = ?;";
-            db.write(query, id);
+                query = "DELETE FROM reservation WHERE id = ? ;";
+                db.write(query, id);
+            };
         } catch (Exception e) {
             System.out.println(e.getMessage());
             throw new RuntimeException();

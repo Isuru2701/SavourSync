@@ -123,12 +123,17 @@ public class ReservationsView extends AbstractView {
             } else {
                 try {
 
-                    int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to cancel this reservation?", "Cancel Reservation", JOptionPane.YES_NO_OPTION);
-                    if(reply == 0) {
-                        int id = Integer.parseInt((String) reservations.getValueAt(row, 0));
-                        controller.deleteReservation(id);
-                        displaySuccess("Reservation canceled successfully");
-                        populate();
+                    if(reservations.getValueAt(row, 4).equals("pending")) {
+                        int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to cancel this reservation?", "Cancel Reservation", JOptionPane.YES_NO_OPTION);
+                        if (reply == 0) {
+                            int id = Integer.parseInt((String) reservations.getValueAt(row, 0));
+                            controller.deleteReservation(id);
+                            displaySuccess("Reservation canceled successfully");
+                            populate();
+                        }
+                    }
+                    else {
+                        displayError("Cannot cancel a reservation that has been fulfilled");
                     }
                 }
                 catch (Exception ex) {

@@ -25,7 +25,7 @@ public class ReservationChecker extends TimerTask {
             }
 
             //if an hour has passed
-            if(t.getDateTime().plusHours(1).isBefore(LocalDateTime.now())){
+            if(t.getDateTime().plusMinutes(1).isBefore(LocalDateTime.now())){
                 //set the table to available
                 Table.setAvailable(t.getTableId());
             }
