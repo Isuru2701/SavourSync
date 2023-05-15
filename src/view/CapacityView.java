@@ -41,7 +41,7 @@ public class CapacityView extends JPanel {
         setBackground(new Color(0x1e1e1e));
         setBorder(null);
         setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(
-        new javax.swing.border.EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion"
+        new javax.swing.border.EmptyBorder(0,0,0,0), ""
         ,javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM
         ,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12)
         ,java.awt.Color.red), getBorder())); addPropertyChangeListener(
