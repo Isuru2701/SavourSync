@@ -8,8 +8,6 @@ import controller.TimelineController;
 
 import java.awt.*;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatterBuilder;
 import java.util.Date;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -153,13 +151,13 @@ public class ReservationsView extends AbstractView {
                     reservations.setModel(model);
                 }
             }
-            resizeColumnWidth(reservations);
+            resizeTable(reservations);
         });
 
     }
 
     //resize table columns to fit the data
-    public void resizeColumnWidth(JTable table) {
+    public void resizeTable(JTable table) {
         final TableColumnModel columnModel = table.getColumnModel();
         for (int column = 0; column < table.getColumnCount(); column++) {
             int width = 15; // Min width
@@ -172,6 +170,9 @@ public class ReservationsView extends AbstractView {
                 width=300;
             columnModel.getColumn(column).setPreferredWidth(width);
         }
+        table.setRowHeight(30);
+
+
     }
 
     public void displayClock() {

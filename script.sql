@@ -35,6 +35,5 @@ create table canceled (
                           table_id int not null,
                           start_datetime datetime not null,
                           primary key (id),
-                          foreign key (client_id) references client(id),
-                          foreign key (table_id) references `table`(id)
+                          foreign key (client_id) references client(id)
 );

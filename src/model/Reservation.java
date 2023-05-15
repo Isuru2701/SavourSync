@@ -91,7 +91,8 @@ public class Reservation {
                     "                    INNER JOIN client ON reservation.client_id = client.id\n" +
                     "                    INNER JOIN `table`\n" +
                     "                    ON reservation.table_id = `table`.id\n" +
-                    "                    WHERE DATE(start_datetime) = CURDATE();";
+                    "                    WHERE DATE(start_datetime) = CURDATE()" +
+                    "                    ORDER BY start_datetime ASC;";
 
             //gets: start_datetime, requests, status, name, tableId for TODAY
 
@@ -140,7 +141,8 @@ public class Reservation {
             String query = "SELECT reservation.id, start_datetime, requests, status, client.name AS name,  `table`.id AS tableId FROM reservation\n" +
                     "                    INNER JOIN client ON reservation.client_id = client.id\n" +
                     "                    INNER JOIN `table`\n" +
-                    "                    ON reservation.table_id = `table`.id;";
+                    "                    ON reservation.table_id = `table`.id" +
+                    "                    ORDER BY start_datetime ";
 
             ResultSet reply = db.query(query);
             if(reply == null) return null;
