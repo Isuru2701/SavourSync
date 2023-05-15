@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class Reservation {
 
-    private int clientId, tableId;
+    private int id, clientId, tableId;
     private String requests,datetime, status;
 
     public Reservation(){
@@ -194,6 +194,7 @@ public class Reservation {
             ResultSet reply =  db.query(query);
             while(reply.next()){
                 reservations.add(new Reservation(reply.getInt("client_id"), reply.getInt("table_id"), reply.getString("start_datetime"), reply.getString("requests")));
+
             }
 
             return reservations;
@@ -204,12 +205,18 @@ public class Reservation {
 
     }
 
-    public void setFulFilled(int id) {
+    public int getTableId(){
+        return tableId;
+    }
+
+
+
+    public void setFulFilled() {
         try {
             DBConn db = new DBConn();
-            String query = "UPDATE reservation SET status = 'FULFILLED' WHERE id = ?";
+            String query = "UPDATE reservation SET status = 'FULFILLED' WHERE client_id = ? AND table_id= ? AND start_datetime = ?;";
             status = "FULFILLED";
-            db.write(query, id);
+            db.write(query, clientId, tableId, getDateTime().toString());
         } catch (Exception e) {
             System.out.println(e.getMessage());
             throw new RuntimeException();

@@ -151,4 +151,15 @@ public class Table {
         }
     }
 
+    public static void setAvailable(int id) {
+        try{
+            DBConn db = new DBConn();
+            String query = "UPDATE `table` SET available = ? WHERE id = ?";
+            db.write(query, true, id);
+        }
+        catch(Exception e) {
+            throw new RuntimeException();
+        }
+    }
+
 }

@@ -35,7 +35,7 @@ public class Restaurant {
         //set up reservation checker. checks every 10 seconds. Pass in all the reservation times as
         Timer t = new Timer();
         try {
-            t.scheduleAtFixedRate(new ReservationChecker(reservationSet), 0, 10000);
+            t.scheduleAtFixedRate(new ReservationChecker(reservationSet), 0, 5000);
 
         }
         catch(Exception e) {
