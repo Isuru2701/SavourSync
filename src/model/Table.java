@@ -92,7 +92,7 @@ public class Table {
         try {
             List<Integer> ids = new ArrayList<Integer>();
             DBConn db = new DBConn();
-            String query = "SELECT id FROM `table` where available = True";
+            String query = "SELECT id FROM `table`";
             ResultSet reply = db.query(query);
             while(reply.next()) {
                 ids.add(reply.getInt(1));

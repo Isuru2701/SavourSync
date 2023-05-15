@@ -13,6 +13,8 @@ import java.time.format.DateTimeFormatterBuilder;
 import java.util.Date;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumnModel;
 
 /**
  * @author ASUS
@@ -41,17 +43,19 @@ public class ReservationsView extends AbstractView {
         scrollPane1 = new JScrollPane();
         reservations = new JTable();
         panel3 = new JPanel();
+        viewToggle = new JToggleButton();
         deleteButton = new JButton();
 
         //======== this ========
         setPreferredSize(new Dimension(500, 800));
         setFont(new Font("Segoe UI Black", Font.BOLD | Font.ITALIC, 20));
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
-        border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER
-        , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font
-        .BOLD ,12 ), java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (
-        new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r"
-        .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+        setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing
+        . border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmDesi\u0067ner Ev\u0061luatio\u006e" , javax. swing .border . TitledBorder
+        . CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dialo\u0067", java .
+        awt . Font. BOLD ,12 ) ,java . awt. Color .red ) , getBorder () ) )
+        ;  addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
+        ) { if( "borde\u0072" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } )
+        ;
         setLayout(new GridBagLayout());
         ((GridBagLayout)getLayout()).columnWidths = new int[] {400, 0};
         ((GridBagLayout)getLayout()).rowHeights = new int[] {0, 0, 50, 0, 100, 0, 0};
@@ -98,6 +102,10 @@ public class ReservationsView extends AbstractView {
         {
             panel3.setLayout(new FlowLayout(FlowLayout.LEFT));
 
+            //---- viewToggle ----
+            viewToggle.setText("All reservations");
+            panel3.add(viewToggle);
+
             //---- deleteButton ----
             deleteButton.setText("Cancel Reservation");
             panel3.add(deleteButton);
@@ -108,6 +116,7 @@ public class ReservationsView extends AbstractView {
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
 
 
+        //delete selected reservation
         deleteButton.addActionListener(e -> {
             int row = reservations.getSelectedRow();
             if (row == -1) {
@@ -128,6 +137,41 @@ public class ReservationsView extends AbstractView {
             }
         });
 
+        //toggle between all and today's reservations
+        viewToggle.addActionListener(e-> {
+            if(viewToggle.isSelected()) {
+                viewToggle.setText("Today's reservations");
+                DefaultTableModel model = controller.fetchAll();
+                if(model != null) {
+                    reservations.setModel(model);
+                }
+            }
+            else {
+                viewToggle.setText("All reservations");
+                DefaultTableModel model = controller.fetch();
+                if(model != null) {
+                    reservations.setModel(model);
+                }
+            }
+            resizeColumnWidth(reservations);
+        });
+
+    }
+
+    //resize table columns to fit the data
+    public void resizeColumnWidth(JTable table) {
+        final TableColumnModel columnModel = table.getColumnModel();
+        for (int column = 0; column < table.getColumnCount(); column++) {
+            int width = 15; // Min width
+            for (int row = 0; row < table.getRowCount(); row++) {
+                TableCellRenderer renderer = table.getCellRenderer(row, column);
+                Component comp = table.prepareRenderer(renderer, row, column);
+                width = Math.max(comp.getPreferredSize().width +1 , width);
+            }
+            if(width > 300)
+                width=300;
+            columnModel.getColumn(column).setPreferredWidth(width);
+        }
     }
 
     public void displayClock() {
@@ -184,6 +228,7 @@ public class ReservationsView extends AbstractView {
     private JScrollPane scrollPane1;
     private JTable reservations;
     private JPanel panel3;
+    private JToggleButton viewToggle;
     private JButton deleteButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }

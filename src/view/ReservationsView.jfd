@@ -52,6 +52,10 @@ new FormModel {
 				"alignment": 0
 			} ) {
 				name: "panel3"
+				add( new FormComponent( "javax.swing.JToggleButton" ) {
+					name: "viewToggle"
+					"text": "All reservations"
+				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "deleteButton"
 					"text": "Cancel Reservation"
