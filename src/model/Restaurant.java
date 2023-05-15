@@ -33,7 +33,7 @@ public class Restaurant {
 
     public static void setOccupancy() {
         DBConn db = new DBConn();
-        ResultSet reply =  db.query("Select seats from `table` where available = 1");
+        ResultSet reply =  db.query("Select seats from `table` where available = 0");
         try{
             while(reply.next()){
                 Restaurant.occupancy += reply.getInt("seats");

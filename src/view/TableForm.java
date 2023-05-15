@@ -155,7 +155,6 @@ public class TableForm extends AbstractView {
                 int seats = Integer.parseInt(seatsField.getText());
                 controller.add(seats);
                 populate(); //acts as a refresh
-
                 
             }
         });
@@ -193,7 +192,6 @@ public class TableForm extends AbstractView {
         availableList.setModel(availability);
         deleteButtons.revalidate();
         deleteButtons.repaint();
-
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off

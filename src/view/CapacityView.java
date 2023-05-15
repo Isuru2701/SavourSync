@@ -20,6 +20,8 @@ import org.knowm.xchart.style.PieStyler;
 public class CapacityView extends JPanel {
 
 
+    private PieChart chart;
+    private JPanel chartXChartPanel;
     private static CapacityController controller;
 
     public CapacityView() {
@@ -32,23 +34,25 @@ public class CapacityView extends JPanel {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner Evaluation license - isuru Yahampath
         chartPanel = new JPanel();
+        refreshButton = new JButton();
 
         //======== this ========
         setPreferredSize(new Dimension(350, 450));
         setBackground(new Color(0x1e1e1e));
         setBorder(null);
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing
-        . border. EmptyBorder( 0, 0, 0, 0) , "", javax. swing. border. TitledBorder
-        . CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .
-        awt .Font .BOLD ,12 ), java. awt. Color. red) , getBorder( )) )
-        ;  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-        ) {if ("bord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} )
-        ;
+        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(
+        new javax.swing.border.EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion"
+        ,javax.swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM
+        ,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12)
+        ,java.awt.Color.red), getBorder())); addPropertyChangeListener(
+        new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e
+        ){if("bord\u0065r".equals(e.getPropertyName()))throw new RuntimeException()
+        ;}});
         setLayout(new GridBagLayout());
         ((GridBagLayout)getLayout()).columnWidths = new int[] {0, 0};
-        ((GridBagLayout)getLayout()).rowHeights = new int[] {0, 0};
+        ((GridBagLayout)getLayout()).rowHeights = new int[] {0, 0, 0};
         ((GridBagLayout)getLayout()).columnWeights = new double[] {1.0, 1.0E-4};
-        ((GridBagLayout)getLayout()).rowWeights = new double[] {1.0, 1.0E-4};
+        ((GridBagLayout)getLayout()).rowWeights = new double[] {1.0, 0.0, 1.0E-4};
 
         //======== chartPanel ========
         {
@@ -59,19 +63,35 @@ public class CapacityView extends JPanel {
         }
         add(chartPanel, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+            new Insets(0, 0, 5, 0), 0, 0));
+
+        //---- refreshButton ----
+        refreshButton.setText("Refresh");
+        refreshButton.setPreferredSize(new Dimension(100, 50));
+        add(refreshButton, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
+            GridBagConstraints.EAST, GridBagConstraints.NONE,
             new Insets(0, 0, 0, 0), 0, 0));
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
 
+        refreshButton.addActionListener(e -> {
+            controller.plot();
+            chartPanel.revalidate();
+            chartPanel.repaint();
+
+
+        });
     }
 
     //used to plot the donut chart
     public void plot(int value, int total) {
 
+
+        chartPanel.removeAll();
         //setting up the dataset, using xchart
         String[] categories = {"Occupied", "Total"};
         int[] values = {(int) value, (int) total};
 
-        PieChart chart = new PieChartBuilder()
+        chart = new PieChartBuilder()
                 .width(350)
                 .height(450)
                 .title("")
@@ -91,7 +111,8 @@ public class CapacityView extends JPanel {
         chart.getStyler().setLegendBackgroundColor(background);
         chart.getStyler().setChartFontColor(Color.white);
 
-        chart.getStyler().setLabelsVisible(false);
+        chart.getStyler().setLabelsVisible(true);
+        chart.getStyler().setLabelType(PieStyler.LabelType.Value);
 
         chart.getStyler().setSeriesColors(new Color[]{
             new Color(135, 206, 250),
@@ -105,16 +126,14 @@ public class CapacityView extends JPanel {
         for (int i = 0; i < categories.length; i++) {
             chart.addSeries(categories[i], values[i]);
         }
-        JPanel chartXChartPanel = new XChartPanel<>(chart);
+        chartXChartPanel = new XChartPanel<>(chart);
         chartPanel.add(chartXChartPanel);
 
 
-
-
     }
-
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
     // Generated using JFormDesigner Evaluation license - isuru Yahampath
     private JPanel chartPanel;
+    private JButton refreshButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }

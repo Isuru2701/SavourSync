@@ -5,7 +5,7 @@ new FormModel {
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
 			"$columnSpecs": "0:1.0"
-			"$rowSpecs": "0:1.0"
+			"$rowSpecs": "0:1.0, 0"
 			"$hGap": 5
 			"$vGap": 5
 			"$alignTop": true
@@ -21,6 +21,15 @@ new FormModel {
 				"background": new java.awt.Color( 30, 30, 30, 255 )
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "refreshButton"
+				"text": "Refresh"
+				"preferredSize": new java.awt.Dimension( 100, 50 )
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+				"gridy": 1
+				"vAlign": 0
+				"hAlign": 4
+			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
 			"size": new java.awt.Dimension( 640, 470 )
