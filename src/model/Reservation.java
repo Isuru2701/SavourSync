@@ -68,6 +68,10 @@ public class Reservation {
         return false;
     }
 
+    /**
+     * GETS ALL THE RESERVATIONS FOR TODAY
+     * @return DefaultTableModel
+     */
     public DefaultTableModel getTableData() {
 
         try{
@@ -106,8 +110,14 @@ public class Reservation {
 
     public void deleteReservation(int id) {
         try {
+
             DBConn db = new DBConn();
-            String query = "UPDATE reservation SET status = 'CANCELED' WHERE id = ?;";
+
+            //add this reservation to canceled first.
+            String query = "INSERT INTO canceled (client_id, table_id, start_datetime) SELECT client_id, table_id, start_datetime FROM reservation WHERE id = ?;";
+            db.write(query, id);
+
+            query = "DELETE FROM reservation WHERE id = ?;";
             db.write(query, id);
         } catch (Exception e) {
             System.out.println(e.getMessage());

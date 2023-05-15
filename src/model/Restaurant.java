@@ -1,5 +1,6 @@
 package model;
 
+import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -14,6 +15,18 @@ import java.sql.SQLException;
 public class Restaurant {
 
     public static int capacity,occupancy;
+    public void init(){
+        DefaultTableModel reservations = new DefaultTableModel();
+        reservations = new Reservation().getTableData();
+        setCapacity();
+        setOccupancy();
+    }
+
+    public void setTimers(){
+
+    }
+
+
 
     public static void setCapacity() {
         DBConn db = new DBConn();

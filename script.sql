@@ -28,3 +28,13 @@ create table Reservation (
                              foreign key (client_id) references Client(id),
                              foreign key (table_id) references `Table`(id)
 );
+
+create table canceled (
+                          id int not null auto_increment,
+                          client_id int not null,
+                          table_id int not null,
+                          start_datetime datetime not null,
+                          primary key (id),
+                          foreign key (client_id) references client(id),
+                          foreign key (table_id) references `table`(id)
+);

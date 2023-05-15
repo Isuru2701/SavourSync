@@ -111,12 +111,16 @@ public class ReservationsView extends AbstractView {
         deleteButton.addActionListener(e -> {
             int row = reservations.getSelectedRow();
             if (row == -1) {
-                JOptionPane.showMessageDialog(null, "Please select a row to delete");
+                displayError("Please select a row to delete");
             } else {
                 try {
-                    int id = Integer.parseInt((String) reservations.getValueAt(row, 0));
-                    controller.deleteReservation(id);
-                    displaySuccess("Reservation deleted successfully");
+
+                    int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to cancel this reservation?", "Cancel Reservation", JOptionPane.YES_NO_OPTION);
+                    if(reply == 0) {
+                        int id = Integer.parseInt((String) reservations.getValueAt(row, 0));
+                        controller.deleteReservation(id);
+                        displaySuccess("Reservation canceled successfully");
+                    }
                 }
                 catch (Exception ex) {
                     displayError(ex.getMessage());
