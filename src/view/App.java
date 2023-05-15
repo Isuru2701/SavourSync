@@ -43,7 +43,7 @@ public class App extends JFrame {
         contentPanel = new JPanel();
 
         //======== this ========
-        setPreferredSize(new Dimension(1000, 800));
+        setPreferredSize(new Dimension(1100, 800));
         setBackground(new Color(0x393939));
         var contentPane = getContentPane();
         contentPane.setLayout(new GridBagLayout());
@@ -103,6 +103,7 @@ public class App extends JFrame {
         pack();
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
+        setResizable(false);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 

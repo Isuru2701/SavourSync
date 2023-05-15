@@ -59,7 +59,7 @@ public class DashboardView extends AbstractView {
             ganttPanel.setLayout(new BoxLayout(ganttPanel, BoxLayout.X_AXIS));
         }
         add(ganttPanel);
-        ganttPanel.setBounds(625, 0, 485, 550);
+        ganttPanel.setBounds(540, 0, 410, 550);
 
         {
             // compute preferred size

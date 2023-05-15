@@ -35,9 +35,9 @@ new FormModel {
 				name: "ganttPanel"
 				"preferredSize": new java.awt.Dimension( 400, 500 )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 625
+				"x": 540
 				"y": 0
-				"width": 485
+				"width": 410
 				"height": 550
 			} )
 		}, new FormLayoutConstraints( null ) {
