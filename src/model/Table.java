@@ -38,8 +38,18 @@ public class Table {
         return available;
     }
 
+    //update db as well
     public void setAvailable(boolean available) {
         this.available = available;
+        try{
+            DBConn db = new DBConn();
+            String query = "UPDATE `table` SET available = ? WHERE id = ?";
+            db.write(query, available, id);
+            db.kill();
+        } catch(Exception e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     public void save() throws RuntimeException {
@@ -75,7 +85,7 @@ public class Table {
 
     /**
      * gets the ids of all available tables (available = true)
-     * @return array of available table ids
+     * @return list of available table ids
      * @throws RuntimeException
      */
     public static List<Integer> getAvailable() throws RuntimeException {
