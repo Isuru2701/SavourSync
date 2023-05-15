@@ -37,24 +37,26 @@ public class ReservationsView extends AbstractView {
         hSpacer1 = new JPanel(null);
         hSpacer2 = new JPanel(null);
         clockLabel = new JLabel();
+        label1 = new JLabel();
         scrollPane1 = new JScrollPane();
         reservations = new JTable();
+        panel3 = new JPanel();
         deleteButton = new JButton();
 
         //======== this ========
-        setPreferredSize(new Dimension(100, 800));
+        setPreferredSize(new Dimension(500, 800));
         setFont(new Font("Segoe UI Black", Font.BOLD | Font.ITALIC, 20));
         setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing.
-        border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER
+        border. EmptyBorder( 0, 0, 0, 0) , "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax. swing. border. TitledBorder. CENTER
         , javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font
         .BOLD ,12 ), java. awt. Color. red) , getBorder( )) );  addPropertyChangeListener (
-        new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r"
+        new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r"
         .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
         setLayout(new GridBagLayout());
         ((GridBagLayout)getLayout()).columnWidths = new int[] {400, 0};
-        ((GridBagLayout)getLayout()).rowHeights = new int[] {0, 0, 0, 0};
+        ((GridBagLayout)getLayout()).rowHeights = new int[] {0, 0, 50, 0, 100, 0, 0};
         ((GridBagLayout)getLayout()).columnWeights = new double[] {1.0, 1.0E-4};
-        ((GridBagLayout)getLayout()).rowWeights = new double[] {0.0, 1.0, 0.0, 1.0E-4};
+        ((GridBagLayout)getLayout()).rowWeights = new double[] {0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 1.0E-4};
 
         //======== panel1 ========
         {
@@ -74,17 +76,33 @@ public class ReservationsView extends AbstractView {
             GridBagConstraints.EAST, GridBagConstraints.VERTICAL,
             new Insets(0, 0, 0, 0), 0, 0));
 
+        //---- label1 ----
+        label1.setText("Today's Reservations");
+        label1.setFont(new Font("Segoe UI", Font.BOLD, 20));
+        add(label1, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0,
+            GridBagConstraints.WEST, GridBagConstraints.VERTICAL,
+            new Insets(0, 0, 0, 0), 0, 0));
+
         //======== scrollPane1 ========
         {
+
+            //---- reservations ----
+            reservations.setPreferredSize(new Dimension(300, 800));
             scrollPane1.setViewportView(reservations);
         }
-        add(scrollPane1, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
+        add(scrollPane1, new GridBagConstraints(0, 4, 1, 1, 0.0, 0.0,
             GridBagConstraints.CENTER, GridBagConstraints.BOTH,
             new Insets(0, 0, 0, 0), 0, 0));
 
-        //---- deleteButton ----
-        deleteButton.setText("Cancel Reservation");
-        add(deleteButton, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
+        //======== panel3 ========
+        {
+            panel3.setLayout(new FlowLayout(FlowLayout.LEFT));
+
+            //---- deleteButton ----
+            deleteButton.setText("Cancel Reservation");
+            panel3.add(deleteButton);
+        }
+        add(panel3, new GridBagConstraints(0, 5, 1, 1, 0.0, 0.0,
             GridBagConstraints.WEST, GridBagConstraints.VERTICAL,
             new Insets(0, 0, 0, 0), 0, 0));
         // JFormDesigner - End of component initialization  //GEN-END:initComponents  @formatter:on
@@ -95,10 +113,17 @@ public class ReservationsView extends AbstractView {
             if (row == -1) {
                 JOptionPane.showMessageDialog(null, "Please select a row to delete");
             } else {
-                int id = (int) reservations.getValueAt(row, 0);
-                controller.deleteReservation(id);
+                try {
+                    int id = Integer.parseInt((String) reservations.getValueAt(row, 0));
+                    controller.deleteReservation(id);
+                    displaySuccess("Reservation deleted successfully");
+                }
+                catch (Exception ex) {
+                    displayError(ex.getMessage());
+                }
             }
         });
+
     }
 
     public void displayClock() {
@@ -120,20 +145,26 @@ public class ReservationsView extends AbstractView {
             dateLabel.setText(new SimpleDateFormat("dd MMMM yyyy").format(new Date()) + "  |  ");
         });
         timer.start();
+        reservations.setSize(1000, 700);
     }
 
     public void populate() {
 
-        DefaultTableModel model = controller.getTableData();
+        DefaultTableModel model = controller.fetch();
 
         if(model != null) {
             reservations.setModel(model);
+            reservations.getColumnModel().getColumn(6).setPreferredWidth(200);
+            reservations.getColumnModel().getColumn(5).setPreferredWidth(250);
+            reservations.getColumnModel().getColumn(1).setPreferredWidth(250);
         }
         else {
             model = new DefaultTableModel();
             model.addRow(new Object[]{"No reservations found"});
             reservations.setModel(new DefaultTableModel());
+
         }
+
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
@@ -143,8 +174,10 @@ public class ReservationsView extends AbstractView {
     private JPanel hSpacer1;
     private JPanel hSpacer2;
     private JLabel clockLabel;
+    private JLabel label1;
     private JScrollPane scrollPane1;
     private JTable reservations;
+    private JPanel panel3;
     private JButton deleteButton;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }

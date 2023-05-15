@@ -1,6 +1,7 @@
 package model;
 
 
+import javax.swing.table.DefaultTableModel;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -16,6 +17,10 @@ public class Reservation {
 
     private int clientId, tableId;
     private String requests,datetime, status;
+
+    public Reservation(){
+
+    }
 
     public Reservation(int clientId, int tableId, String datetime, String requests) {
         this.clientId = clientId;
@@ -61,6 +66,97 @@ public class Reservation {
         }
 
         return false;
+    }
+
+    public DefaultTableModel getTableData() {
+
+        try{
+
+            DefaultTableModel model = new DefaultTableModel() {
+                @Override//cells cant be edited
+                public boolean isCellEditable(int row, int column) {
+                    return false;
+                }
+            };
+            String[] columns = {"ID","Date", "Time", "Client", "Table", "Status", "Requests"};
+            model.setColumnIdentifiers(columns);
+
+            DBConn db = new DBConn();
+
+            String query = "SELECT reservation.id, start_datetime, requests, status, client.name AS name,  `table`.id AS tableId FROM reservation\n" +
+                    "                    INNER JOIN client ON reservation.client_id = client.id\n" +
+                    "                    INNER JOIN `table`\n" +
+                    "                    ON reservation.table_id = `table`.id\n" +
+                    "                    WHERE DATE(start_datetime) = CURDATE();";
+
+            //gets: start_datetime, requests, status, name, tableId for TODAY
+
+            ResultSet reply = db.query(query);
+            if(reply == null) return null;
+
+
+
+            //yyyy-MM-dd HH:mm:ss
+            return getDefaultTableModel(model, reply);
+        }
+        catch(Exception e){
+            throw new RuntimeException();
+        }
+    }
+
+    public void deleteReservation(int id) {
+        try {
+            DBConn db = new DBConn();
+            String query = "UPDATE reservation SET status = 'CANCELED' WHERE id = ?;";
+            db.write(query);
+        } catch (Exception e) {
+            throw new RuntimeException();
+        }
+    }
+
+    public DefaultTableModel getAll(){
+        try{
+
+            String[] columns = {"ID","Date", "Time", "Client", "Table", "Status", "Requests"};
+
+            DefaultTableModel model = new DefaultTableModel() {
+                @Override//cells cant be edited
+                public boolean isCellEditable(int row, int column) {
+                    return false;
+                }
+            };
+                DBConn db = new DBConn();
+            String query = "SELECT reservation.id, start_datetime, requests, status, client.name AS name,  `table`.id AS tableId FROM reservation\n" +
+                    "                    INNER JOIN client ON reservation.client_id = client.id\n" +
+                    "                    INNER JOIN `table`\n" +
+                    "                    ON reservation.table_id = `table`.id;";
+
+            ResultSet reply = db.query(query);
+            if(reply == null) return null;
+            model.setColumnIdentifiers(columns);
+
+            //yyyy-MM-dd HH:mm:ss
+            return getDefaultTableModel(model, reply);
+
+        }
+        catch (Exception e){
+            throw new RuntimeException();
+        }
+    }
+
+    private DefaultTableModel getDefaultTableModel(DefaultTableModel model, ResultSet reply) throws SQLException {
+        while(reply.next()) {
+            String[] row = new String[7];
+            row[0] = reply.getString("id");
+            row[1] = reply.getString("start_datetime").substring(0, 11);
+            row[2] = reply.getString("start_datetime").substring(11,16);
+            row[3] = reply.getString("name");
+            row[4] = reply.getString("tableId");
+            row[5] = reply.getString("status");
+            row[6] = reply.getString("requests");
+            model.addRow(row);
+        }
+        return model;
     }
 
 

@@ -33,12 +33,12 @@ new FormModel {
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) ) {
 				name: "ganttPanel"
-				"preferredSize": new java.awt.Dimension( 400, 500 )
+				"preferredSize": new java.awt.Dimension( 700, 800 )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 540
 				"y": 0
-				"width": 410
-				"height": 550
+				"width": 495
+				"height": 630
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 5, 0 )
