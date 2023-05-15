@@ -24,26 +24,20 @@ new FormModel {
 			} ) {
 				name: "tablesPanel"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 0
-				"y": 115
-				"height": 600
-				"width": 580
+				"x": -5
+				"y": 255
+				"height": 400
+				"width": 540
 			} )
-			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
-				"$columnSpecs": "0:1.0"
-				"$rowSpecs": "0:1.0"
-				"$hGap": 5
-				"$vGap": 5
-				"$alignTop": true
-				"$alignLeft": true
-			} ) {
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) ) {
 				name: "capacityPanel"
-				"preferredSize": new java.awt.Dimension( 350, 450 )
+				"preferredSize": new java.awt.Dimension( 340, 450 )
+				"background": new java.awt.Color( 30, 30, 30, 255 )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 5
-				"y": 0
-				"width": 430
-				"height": 215
+				"x": 0
+				"y": -50
+				"width": 515
+				"height": 310
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 5, 0 )

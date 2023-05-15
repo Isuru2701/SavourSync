@@ -4,6 +4,7 @@
 
 package view;
 
+import com.formdev.flatlaf.FlatDarculaLaf;
 import com.formdev.flatlaf.FlatDarkLaf;
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import controller.AppController;
@@ -18,6 +19,7 @@ public class App extends JFrame {
 
     AppController controller;
     public App() {
+
         controller = new AppController(this);
 
         try {

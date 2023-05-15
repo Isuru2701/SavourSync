@@ -13,6 +13,6 @@ public class CapacityController {
     }
 
     public void plot(){
-        view.plot(Restaurant.getCapacity(), Restaurant.getOccupancy());
+        view.plot(Restaurant.getOccupancy(), Restaurant.getCapacity());
     }
 }

@@ -12,9 +12,18 @@ new FormModel {
 			"$alignLeft": true
 		} ) {
 			name: "this"
+			"preferredSize": new java.awt.Dimension( 350, 450 )
+			"background": new java.awt.Color( 30, 30, 30, 255 )
+			"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) ) {
+				name: "chartPanel"
+				"preferredSize": new java.awt.Dimension( 350, 450 )
+				"background": new java.awt.Color( 30, 30, 30, 255 )
+				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 590, 415 )
+			"size": new java.awt.Dimension( 640, 470 )
 		} )
 	}
 }
