@@ -108,8 +108,9 @@ public class Reservation {
         try {
             DBConn db = new DBConn();
             String query = "UPDATE reservation SET status = 'CANCELED' WHERE id = ?;";
-            db.write(query);
+            db.write(query, id);
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             throw new RuntimeException();
         }
     }

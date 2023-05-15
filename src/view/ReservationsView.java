@@ -157,6 +157,8 @@ public class ReservationsView extends AbstractView {
             reservations.getColumnModel().getColumn(6).setPreferredWidth(200);
             reservations.getColumnModel().getColumn(5).setPreferredWidth(250);
             reservations.getColumnModel().getColumn(1).setPreferredWidth(250);
+
+            reservations.getColumnModel().getColumn(6).setResizable(true);
         }
         else {
             model = new DefaultTableModel();
