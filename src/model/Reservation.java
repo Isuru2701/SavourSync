@@ -7,6 +7,9 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Class Reservation
@@ -30,8 +33,19 @@ public class Reservation {
         this.status = "pending";
     }
 
-    public String getDateTime() {
-        return datetime;
+    /**
+     * converts the string to LocalDateTime first
+     * @return LocalDateTime
+     */
+    public LocalDateTime getDateTime() {
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S");
+            return LocalDateTime.parse(datetime, formatter);
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            throw new RuntimeException();
+        }
     }
 
     public String getRequests() {
@@ -172,22 +186,29 @@ public class Reservation {
         return model;
     }
 
-    public ResultSet getResultSet(){
+    public static List<Reservation> getResultSet(){
         try{
+            List<Reservation> reservations = new ArrayList<>();
             DBConn db = new DBConn();
-            String query = "SELECT * FROM reservation";
-            return db.query(query);
+            String query = "SELECT * FROM reservation;";
+            ResultSet reply =  db.query(query);
+            while(reply.next()){
+                reservations.add(new Reservation(reply.getInt("client_id"), reply.getInt("table_id"), reply.getString("start_datetime"), reply.getString("requests")));
+            }
 
+            return reservations;
         }
         catch(Exception e){
             throw new RuntimeException();
         }
+
     }
 
     public void setFulFilled(int id) {
         try {
             DBConn db = new DBConn();
             String query = "UPDATE reservation SET status = 'FULFILLED' WHERE id = ?";
+            status = "FULFILLED";
             db.write(query, id);
         } catch (Exception e) {
             System.out.println(e.getMessage());

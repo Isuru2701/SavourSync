@@ -9,8 +9,6 @@ public class AppController {
 
     public AppController(App app) {
         this.app = app;
-        Restaurant.init();
-
     }
 
     public void setView(AbstractView view) {

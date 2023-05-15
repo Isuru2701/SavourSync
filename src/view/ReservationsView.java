@@ -5,6 +5,7 @@
 package view;
 
 import controller.TimelineController;
+import model.Restaurant;
 
 import java.awt.*;
 import java.text.SimpleDateFormat;
@@ -218,6 +219,8 @@ public class ReservationsView extends AbstractView {
             reservations.setModel(new DefaultTableModel());
 
         }
+
+        Restaurant.init();
 
     }
 

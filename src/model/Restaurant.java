@@ -9,6 +9,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.DateTimeParseException;
+import java.util.List;
+import java.util.Timer;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
@@ -22,14 +24,26 @@ import java.util.concurrent.ScheduledExecutorService;
  */
 public class Restaurant {
 
-    private static ResultSet reservationSet;
+    private static List<Reservation> reservationSet;
     private static final ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
     public static int capacity,occupancy;
     public static void init(){
-        reservationSet = new Reservation().getResultSet();
+        reservationSet = Reservation.getResultSet();
         setCapacity();
         setOccupancy();
-        setTimers();
+
+        //set up reservation checker. checks every 10 seconds. Pass in all the reservation times as
+        Timer t = new Timer();
+        try {
+            t.scheduleAtFixedRate(new ReservationChecker(reservationSet), 0, 10000);
+
+        }
+        catch(Exception e) {
+            System.out.println(e.getMessage());
+            throw new RuntimeException();
+        }
+
+
     }
 
     //gets all the reservations for the day

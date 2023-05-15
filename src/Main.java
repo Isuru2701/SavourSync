@@ -1,3 +1,4 @@
+import model.Restaurant;
 import view.*;
 import controller.AppController;
 import view.App;
@@ -11,6 +12,5 @@ public class Main {
         app = new App();
         controller = new AppController(app);
         app.setController(controller);
-
     }
 }
