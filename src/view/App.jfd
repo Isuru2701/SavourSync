@@ -10,7 +10,7 @@ new FormModel {
 			"$alignLeft": true
 		} ) {
 			name: "this"
-			"preferredSize": new java.awt.Dimension( 1000, 750 )
+			"preferredSize": new java.awt.Dimension( 1000, 800 )
 			"background": new java.awt.Color( 57, 57, 57, 255 )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
 				name: "navbarPanel"

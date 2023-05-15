@@ -43,7 +43,7 @@ public class App extends JFrame {
         contentPanel = new JPanel();
 
         //======== this ========
-        setPreferredSize(new Dimension(1000, 750));
+        setPreferredSize(new Dimension(1000, 800));
         setBackground(new Color(0x393939));
         var contentPane = getContentPane();
         contentPane.setLayout(new GridBagLayout());
@@ -54,12 +54,13 @@ public class App extends JFrame {
 
         //======== navbarPanel ========
         {
-            navbarPanel.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing. border .EmptyBorder
-            ( 0, 0 ,0 , 0) ,  "" , javax. swing .border . TitledBorder. CENTER ,javax . swing. border
-            .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069alog", java .awt . Font. BOLD ,12 ) ,java . awt
-            . Color .red ) ,navbarPanel. getBorder () ) ); navbarPanel. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void
-            propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062order" .equals ( e. getPropertyName () ) )throw new RuntimeException( )
-            ;} } );
+            navbarPanel.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new
+            javax . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "" , javax
+            . swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java
+            . awt .Font ( "Dia\u006cog", java .awt . Font. BOLD ,12 ) ,java . awt
+            . Color .red ) ,navbarPanel. getBorder () ) ); navbarPanel. addPropertyChangeListener( new java. beans .
+            PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062ord\u0065r" .
+            equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
             navbarPanel.setLayout(new FlowLayout());
 
             //---- label1 ----

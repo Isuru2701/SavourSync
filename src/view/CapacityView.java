@@ -11,13 +11,7 @@ import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import controller.CapacityController;
 
 //chart imports
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartFrame;
-import org.jfree.chart.ChartPanel;
-import org.jfree.chart.JFreeChart;
-import org.jfree.chart.plot.PiePlot;
-import org.jfree.data.general.DefaultPieDataset;
-
+import org.knowm.xchart.*;
 /**
  * @author ASUS
  */
@@ -42,7 +36,7 @@ public class CapacityView extends JPanel {
         setBackground(new Color(0x1e1e1e));
         setBorder(null);
         setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax.
-        swing. border. EmptyBorder( 0, 0, 0, 0) , "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e", javax. swing. border
+        swing. border. EmptyBorder( 0, 0, 0, 0) , "", javax. swing. border
         . TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069al\u006fg"
         ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) , getBorder
         ( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java
@@ -69,27 +63,43 @@ public class CapacityView extends JPanel {
     }
 
     //used to plot the donut chart
-    public void plot(double value, double total) {
+    public void plot(int value, int total) {
 
-        //setting up the dataset
-        DefaultPieDataset dataset = new DefaultPieDataset();
-        dataset.setValue("Occupied: " + total, total);
-        dataset.setValue("Total: " + value , value);
+        //setting up the dataset, using xchart
+        String[] categories = {"Occupied", "Total"};
+        int[] values = {(int) value, (int) total};
 
-        JFreeChart chart = ChartFactory.createRingChart(
-                "Occupancy Ratio",  // Title
-                dataset,       // Dataset
-                false,          // Show legend
-                true,          // Use tooltips
-                false          // Generate URLs
-        );
+        PieChart chart = new PieChartBuilder()
+                .width(350)
+                .height(450)
+                .title("Capacity")
+                .build();
 
-        chart.getPlot().setBackgroundPaint(new Color(30, 30, 30, 255));
-        ChartPanel panel = new ChartPanel(chart);
-        panel.setSize(340, 450);
-        panel.setBackground(new Color(30, 30, 30, 255));
-        chartPanel.add(panel);
-        setVisible(true);
+
+        chart.getStyler().setPlotContentSize(.9);
+
+        Color background = new Color(30, 30, 30);
+
+        chart.getStyler().setChartBackgroundColor(background);
+        chart.getStyler().setPlotBackgroundColor(background);
+
+        chart.getStyler().setLegendBorderColor(background);
+
+        chart.getStyler().setLegendBackgroundColor(background);
+        chart.getStyler().setChartFontColor(Color.white);
+
+
+
+        chart.getStyler().setPlotBorderColor(background);
+        chart.getStyler().setDefaultSeriesRenderStyle(PieSeries.PieSeriesRenderStyle.Donut);
+
+        for (int i = 0; i < categories.length; i++) {
+            chart.addSeries(categories[i], values[i]);
+        }
+        JPanel chartXChartPanel = new XChartPanel<>(chart);
+        chartPanel.add(chartXChartPanel);
+
+
 
 
     }

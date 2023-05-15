@@ -24,10 +24,10 @@ new FormModel {
 			} ) {
 				name: "tablesPanel"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": -5
-				"y": 255
-				"height": 400
-				"width": 540
+				"x": 0
+				"y": 270
+				"height": 380
+				"width": 535
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class javax.swing.BoxLayout ) ) {
 				name: "capacityPanel"
@@ -35,7 +35,7 @@ new FormModel {
 				"background": new java.awt.Color( 30, 30, 30, 255 )
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
 				"x": 0
-				"y": -50
+				"y": -15
 				"width": 515
 				"height": 310
 			} )
