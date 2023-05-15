@@ -127,6 +127,7 @@ public class ReservationsView extends AbstractView {
                         int id = Integer.parseInt((String) reservations.getValueAt(row, 0));
                         controller.deleteReservation(id);
                         displaySuccess("Reservation canceled successfully");
+                        populate();
                     }
                 }
                 catch (Exception ex) {
