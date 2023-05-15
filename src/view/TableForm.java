@@ -45,12 +45,11 @@ public class TableForm extends AbstractView {
 
         //======== this ========
         setPreferredSize(new Dimension(500, 500));
-        setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border
-        .EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border.TitledBorder.CENTER,javax
-        .swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,
-        12),java.awt.Color.red), getBorder())); addPropertyChangeListener(new java.beans
-        .PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("bord\u0065r".equals(e.
-        getPropertyName()))throw new RuntimeException();}});
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder( 0
+        , 0, 0, 0) , "", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
+        , new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,
+         getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
+        ) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
         setLayout(null);
 
         //---- label1 ----
@@ -111,17 +110,17 @@ public class TableForm extends AbstractView {
         //---- label4 ----
         label4.setText("Table ID");
         add(label4);
-        label4.setBounds(new Rectangle(new Point(15, 50), label4.getPreferredSize()));
+        label4.setBounds(15, 50, 90, label4.getPreferredSize().height);
 
         //---- label5 ----
         label5.setText("Seats");
         add(label5);
-        label5.setBounds(new Rectangle(new Point(125, 50), label5.getPreferredSize()));
+        label5.setBounds(125, 50, 75, label5.getPreferredSize().height);
 
         //---- label6 ----
         label6.setText("Status");
         add(label6);
-        label6.setBounds(new Rectangle(new Point(235, 50), label6.getPreferredSize()));
+        label6.setBounds(235, 50, 80, label6.getPreferredSize().height);
 
         {
             // compute preferred size
@@ -165,6 +164,8 @@ public class TableForm extends AbstractView {
         DefaultListModel<Integer> seats = new DefaultListModel<>();
         DefaultListModel<String> availability = new DefaultListModel<>();
 
+        deleteButtons.removeAll();
+
         for(Table t : controller.getList()) {
             ids.addElement(t.getId());
             seats.addElement(t.getSeats());
@@ -183,6 +184,7 @@ public class TableForm extends AbstractView {
         idList.setModel(ids);
         seatsList.setModel(seats);
         availableList.setModel(availability);
+        deleteButtons.revalidate();
         deleteButtons.repaint();
 
     }
