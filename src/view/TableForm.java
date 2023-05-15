@@ -45,11 +45,13 @@ public class TableForm extends AbstractView {
 
         //======== this ========
         setPreferredSize(new Dimension(500, 500));
-        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder( 0
-        , 0, 0, 0) , "", javax. swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM
-        , new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt. Color. red) ,
-         getBorder( )) );  addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e
-        ) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
+        setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new
+        javax. swing. border. EmptyBorder( 0, 0, 0, 0) , "", javax
+        . swing. border. TitledBorder. CENTER, javax. swing. border. TitledBorder. BOTTOM, new java
+        .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
+        . Color. red) , getBorder( )) );  addPropertyChangeListener (new java. beans.
+        PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("bord\u0065r" .
+        equals (e .getPropertyName () )) throw new RuntimeException( ); }} );
         setLayout(null);
 
         //---- label1 ----
@@ -157,6 +159,10 @@ public class TableForm extends AbstractView {
             }
         });
 
+        availableList.setFixedCellHeight(25);
+        seatsList.setFixedCellHeight(25);
+        idList.setFixedCellHeight(25);
+
     }
 
     public void populate() {
@@ -169,7 +175,7 @@ public class TableForm extends AbstractView {
         for(Table t : controller.getList()) {
             ids.addElement(t.getId());
             seats.addElement(t.getSeats());
-            availability.addElement(t.isAvailable() ? "Available" : "Not Available");
+            availability.addElement(t.isAvailable() ? "Available" : "Occupied");
 
             JButton button = new JButton("Delete");
             button.addActionListener(e -> {
