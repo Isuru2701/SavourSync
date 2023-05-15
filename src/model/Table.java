@@ -133,6 +133,7 @@ public class Table {
             DBConn db = new DBConn();
             String query = "DELETE FROM `table` WHERE id = ?";
             db.write(query, id);
+            db.kill();
         } catch(Exception e) {
             throw new RuntimeException(e);
         }
@@ -143,6 +144,10 @@ public class Table {
             DBConn db = new DBConn();
             String query = "UPDATE `table` SET available = ? WHERE id = ?";
             db.write(query, false, id);
+
+            //reservation updated to fulfilled
+            query = "UPDATE reservation SET status = ? WHERE table_id = ?";
+            db.write(query, "fulfilled", id);
             db.kill();
         } catch(Exception e) {
             throw new RuntimeException(e);
