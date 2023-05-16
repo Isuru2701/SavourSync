@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with Jaspersoft Studio version 6.20.3.final using JasperReports Library version 6.20.3-415f9428cffdb6805c6f85bbb29ebaf18813a2ab  -->
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DayReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="316ea24a-c371-49a2-8db9-4ac6c610f162">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Cancelled" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="91db1f1f-5f4f-4526-bbdd-5893b7e380b6">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<style name="Table_TH" mode="Opaque" backcolor="#F0F8FF">
 		<box>
 			<pen lineWidth="0.5" lineColor="#000000"/>
@@ -28,7 +29,9 @@
 			<rightPen lineWidth="0.5" lineColor="#000000"/>
 		</box>
 	</style>
-	<subDataset name="dayadata" uuid="5982be4f-67c1-4f22-80f2-7cc33f44e825">
+	<subDataset name="cancelled" uuid="a3ff633c-f5b5-414d-8e30-8b8c58f2884b">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+		<parameter name="Table" class="net.sf.jasperreports.engine.JRResultSetDataSource"/>
 		<queryString>
 			<![CDATA[]]>
 		</queryString>
@@ -36,54 +39,53 @@
 		<field name="client_id" class="java.lang.Integer"/>
 		<field name="table_id" class="java.lang.Integer"/>
 		<field name="start_datetime" class="java.sql.Time"/>
-		<field name="requests" class="java.lang.String"/>
-		<field name="status" class="java.lang.String"/>
-	</subDataset>
-	<subDataset name="day" uuid="beb7804b-ca28-48f5-aea2-c41e2256853b">
-		<queryString>
-			<![CDATA[]]>
-		</queryString>
-		<field name="client_id" class="java.lang.Integer"/>
-		<field name="id" class="java.lang.Integer"/>
-		<field name="table_id" class="java.lang.Integer"/>
-		<field name="start_datetime" class="java.sql.Time"/>
-		<field name="requests" class="java.lang.String"/>
-		<field name="status" class="java.lang.String"/>
 	</subDataset>
 	<parameter name="Table" class="net.sf.jasperreports.engine.JRResultSetDataSource"/>
-	<queryString>
-		<![CDATA[]]>
+	<queryString language="SQL">
+		<![CDATA[Select * from savoursync.canceled]]>
 	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="canceled"/>
+	</field>
+	<field name="client_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="client_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="client_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="canceled"/>
+	</field>
+	<field name="table_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="table_id"/>
+		<property name="com.jaspersoft.studio.field.label" value="table_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="canceled"/>
+	</field>
+	<field name="start_datetime" class="java.time.LocalDateTime">
+		<property name="com.jaspersoft.studio.field.name" value="start_datetime"/>
+		<property name="com.jaspersoft.studio.field.label" value="start_datetime"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="canceled"/>
+	</field>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch">
+		<band height="82" splitType="Stretch">
 			<staticText>
-				<reportElement x="120" y="0" width="320" height="50" uuid="e60f1dcf-805f-4627-965e-a2af18ba0ced"/>
-				<textElement textAlignment="Center">
-					<font size="29" isBold="true"/>
+				<reportElement x="150" y="0" width="260" height="70" uuid="8287d1e6-aa62-406a-a619-568a6601912f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Daily Report]]></text>
+				<text><![CDATA[Cancellations Report]]></text>
 			</staticText>
 		</band>
 	</title>
 	<pageHeader>
-		<band height="80" splitType="Stretch">
+		<band height="44" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="440" height="30" uuid="d93d77c2-6dbf-4dc9-94c3-db365b97073c"/>
-				<textElement>
-					<font size="14"/>
+				<reportElement x="0" y="10" width="218" height="30" uuid="22e687af-2e61-4555-9f92-7a79f9aff573"/>
+				<textElement textAlignment="Center">
+					<font size="11" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Summary of all the reservations for today]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="0" y="30" width="440" height="50" uuid="10a12dd3-96e3-4d34-9e85-527f432a5271"/>
-				<textElement>
-					<font size="12"/>
-				</textElement>
-				<text><![CDATA[PENDING = upcoming  FULFILLED = completed
-view the cancellations report for an overview on cancelled reservations]]></text>
+				<text><![CDATA[Cancellations of reservations that were set for today]]></text>
 			</staticText>
 		</band>
 	</pageHeader>
@@ -91,47 +93,47 @@ view the cancellations report for an overview on cancelled reservations]]></text
 		<band height="61" splitType="Stretch"/>
 	</columnHeader>
 	<detail>
-		<band height="361" splitType="Stretch">
+		<band height="303" splitType="Stretch">
 			<componentElement>
-				<reportElement style="Table_TH" x="0" y="0" width="555" height="361" uuid="4fa7fe8c-f94e-4b14-b93d-d57208592ed8">
+				<reportElement x="0" y="0" width="550" height="200" uuid="6855fc08-f1e4-4301-92cc-4a1525e18f7a">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
 					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
 					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
 					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
-					<property name="com.jaspersoft.studio.components.autoresize.proportional" value="true"/>
 					<property name="com.jaspersoft.studio.components.autoresize.next" value="true"/>
+					<property name="com.jaspersoft.studio.components.autoresize.proportional" value="true"/>
 				</reportElement>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="day" uuid="e6b3299a-f7ec-410d-bae3-8652836052ce">
+					<datasetRun subDataset="cancelled" uuid="02989f15-00ba-422d-8f66-1ace5fc69b39">
 						<dataSourceExpression><![CDATA[$P{Table}]]></dataSourceExpression>
 					</datasetRun>
-					<jr:column width="81" uuid="0f2dc2af-76b1-4e89-b6c3-0b59e7ca9ea2">
+					<jr:column width="138" uuid="2bbec350-d6d4-4691-8ccf-70b20799f887">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
 						<jr:tableHeader style="Table_TH" height="30" rowSpan="1"/>
 						<jr:tableFooter style="Table_TH" height="30" rowSpan="1"/>
 						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="81" height="30" uuid="2181565e-d663-4311-b87d-6a07e663cde8"/>
+								<reportElement x="0" y="0" width="138" height="30" uuid="aebb3993-5718-4237-a0cd-9c01bec9fbe8"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<text><![CDATA[Reservation id]]></text>
+								<text><![CDATA[Reservation Id]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:columnFooter style="Table_CH" height="30" rowSpan="1"/>
 						<jr:detailCell style="Table_TD" height="30">
 							<textField>
-								<reportElement x="0" y="0" width="81" height="30" uuid="ac021140-b27f-43b4-b446-8d73f40ff9c6"/>
+								<reportElement x="0" y="0" width="138" height="30" uuid="27bc5be1-8496-49d5-8c44-94a396cf8d04"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="90" uuid="827655af-7516-4d69-9f2a-3f7f4de14f04">
+					<jr:column width="138" uuid="01f6645f-4388-423a-9b8d-444acfad8eb3">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
 						<jr:tableHeader style="Table_TH" height="30" rowSpan="1"/>
 						<jr:tableFooter style="Table_TH" height="30" rowSpan="1"/>
 						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="90" height="30" uuid="74f5b66a-d1ba-488b-8c93-9401fe780c8b"/>
+								<reportElement x="0" y="0" width="138" height="30" uuid="d77ab029-2513-48b7-a0d6-974b44cfee54"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<text><![CDATA[Client Id]]></text>
 							</staticText>
@@ -139,19 +141,19 @@ view the cancellations report for an overview on cancelled reservations]]></text
 						<jr:columnFooter style="Table_CH" height="30" rowSpan="1"/>
 						<jr:detailCell style="Table_TD" height="30">
 							<textField>
-								<reportElement x="0" y="0" width="90" height="30" uuid="d6e485c3-f45f-4b8d-9cf9-834e62eaa97b"/>
+								<reportElement x="0" y="0" width="138" height="30" uuid="be7ea38b-73c7-42fb-bc58-7e1952599635"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{client_id}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="86" uuid="185fdfbb-f959-4d63-9ed7-66d5445979e3">
+					<jr:column width="137" uuid="f1f9d564-a3b6-47ea-8478-9c0291a05e16">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
 						<jr:tableHeader style="Table_TH" height="30" rowSpan="1"/>
 						<jr:tableFooter style="Table_TH" height="30" rowSpan="1"/>
 						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="86" height="30" uuid="91288a01-6e15-4ddb-81e9-f2ad097a3ba5"/>
+								<reportElement x="0" y="0" width="137" height="30" uuid="09428ee3-7fa0-4420-8d06-630fcec053d5"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<text><![CDATA[Table Id]]></text>
 							</staticText>
@@ -159,19 +161,19 @@ view the cancellations report for an overview on cancelled reservations]]></text
 						<jr:columnFooter style="Table_CH" height="30" rowSpan="1"/>
 						<jr:detailCell style="Table_TD" height="30">
 							<textField>
-								<reportElement x="0" y="0" width="86" height="30" uuid="d515f9f2-d55d-4ba2-be6e-1c9b4db32ebc"/>
+								<reportElement x="0" y="0" width="137" height="30" uuid="c948a841-8c4f-404f-ac15-073dff1c1040"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{table_id}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="94" uuid="d1852459-9d31-476b-b0c8-e0bc3148db6c">
+					<jr:column width="137" uuid="6413e4eb-74d9-4a3f-bb60-5d324567bb8f">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
 						<jr:tableHeader style="Table_TH" height="30" rowSpan="1"/>
 						<jr:tableFooter style="Table_TH" height="30" rowSpan="1"/>
 						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="94" height="30" uuid="365a1e1c-d277-4776-bbca-e4ec95ad9405"/>
+								<reportElement x="0" y="0" width="137" height="30" uuid="1ef4e15a-71e3-4d4c-8bba-b0865265f92a"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<text><![CDATA[Time]]></text>
 							</staticText>
@@ -179,49 +181,9 @@ view the cancellations report for an overview on cancelled reservations]]></text
 						<jr:columnFooter style="Table_CH" height="30" rowSpan="1"/>
 						<jr:detailCell style="Table_TD" height="30">
 							<textField>
-								<reportElement x="0" y="0" width="94" height="30" uuid="33215db4-c0f9-4850-bfea-0a462f20d52e"/>
+								<reportElement x="0" y="0" width="137" height="30" uuid="086140b1-a6da-42d4-bdae-ba00dd9d31d7"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{start_datetime}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="117" uuid="e27a1ff9-8b43-45bf-8a74-f3b06390bc56">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
-						<jr:tableHeader style="Table_TH" height="30" rowSpan="1"/>
-						<jr:tableFooter style="Table_TH" height="30" rowSpan="1"/>
-						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="117" height="30" uuid="2b8e8627-d9e8-4bad-ae94-1738f2c5b732"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<text><![CDATA[Requests]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:columnFooter style="Table_CH" height="30" rowSpan="1"/>
-						<jr:detailCell style="Table_TD" height="30">
-							<textField>
-								<reportElement x="0" y="0" width="117" height="30" uuid="16dadc9b-283c-4219-85f5-9f152720a5c2"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{requests}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="87" uuid="d25bf674-7d54-43d5-a3c6-b06a87e35dfd">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column6"/>
-						<jr:tableHeader style="Table_TH" height="30" rowSpan="1"/>
-						<jr:tableFooter style="Table_TH" height="30" rowSpan="1"/>
-						<jr:columnHeader style="Table_CH" height="30" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="87" height="30" uuid="ad0be8b4-3d00-43ee-a766-18f402476b57"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<text><![CDATA[Status]]></text>
-							</staticText>
-						</jr:columnHeader>
-						<jr:columnFooter style="Table_CH" height="30" rowSpan="1"/>
-						<jr:detailCell style="Table_TD" height="30">
-							<textField>
-								<reportElement x="0" y="0" width="87" height="30" uuid="4b20a454-46e8-4b8b-a8ec-371e2624bea2"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>

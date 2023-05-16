@@ -23,4 +23,8 @@ public class ReportController extends AbstractController{
         model.compileDailyReport();
     }
 
+    public void canceledReport(){
+        model.compileCanceledReport();
+    }
+
 }
