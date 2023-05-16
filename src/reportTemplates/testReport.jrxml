@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.3.final using JasperReports Library version 6.20.3-415f9428cffdb6805c6f85bbb29ebaf18813a2ab  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="testReport" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="355ef550-d33d-47fe-82fb-c51f4db6f14c">
+	<property name="com.jaspersoft.studio.data.sql.tables">
+		<![CDATA[Y2xpZW50ICwyMCw5MSw4NmZiYWFlOC0xMWIwLTQxY2MtYjlhYy01MzhjMWZkZGJiNzQ7c2F2b3Vy
+c3luYy5jbGllbnQgQVMgLDQ5LDE1NywxOTFlY2VkNC04N2Q4LTQ4MzktYWFhZi0wMjk4M2M1NDdj
+NTQ7c2F2b3Vyc3luYy5yZXNlcnZhdGlvbiBBUyAsMjI2LDE3NSwyMWFmOTg5YS0wNzIyLTQ5Zjgt
+YTcwYi1mZWM3MWUyNjU2NGI7]]>
+	</property>
+	<queryString language="SQL">
+		<![CDATA[SELECT *
+FROM client]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
