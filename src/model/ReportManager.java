@@ -3,9 +3,11 @@ import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.swing.JRViewer;
 import net.sf.jasperreports.view.JasperDesignViewer;
 import net.sf.jasperreports.view.JasperViewer;
 
+import javax.swing.*;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -18,7 +20,7 @@ public class ReportManager {
     //as the app could be placed anywhere, fetch the dir path to cal abs path
     private String directory = System.getProperty("user.dir");
 
-    public void compileDailyReport() {
+    public JRViewer compileDailyReport() {
 
         try {
             DBConn db = new DBConn();
@@ -37,7 +39,10 @@ public class ReportManager {
             parameters.put("Table", resultSetDataSource);
 
             JasperPrint print = JasperFillManager.fillReport(report, parameters, new JREmptyDataSource());
-            JasperViewer.viewReport(print);
+            JRViewer viewer = new JRViewer(print);
+            viewer.setZoomRatio(0.5f);
+
+            return viewer;
 
         }
         catch(Exception e) {
@@ -45,11 +50,8 @@ public class ReportManager {
         }
     }
 
-    public void compileWeekDayReport() {
 
-    }
-
-    public void compileCanceledReport() {
+    public JRViewer compileCanceledReport() {
         try{
             DBConn db = new DBConn();
             String query = "SELECT * FROM canceled WHERE DATE(start_datetime) = CURDATE();";
@@ -67,7 +69,10 @@ public class ReportManager {
             parameters.put("Table", resultSetDataSource);
 
             JasperPrint print = JasperFillManager.fillReport(report, parameters, new JREmptyDataSource());
-            JasperViewer.viewReport(print);
+            JRViewer viewer = new JRViewer(print);
+            viewer.setZoomRatio(0.5f);
+
+            return viewer;
 
         }
         catch(Exception e) {

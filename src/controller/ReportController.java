@@ -1,6 +1,7 @@
 package controller;
 
 import model.ReportManager;
+import net.sf.jasperreports.swing.JRViewer;
 import view.ReportView;
 
 /**
@@ -19,12 +20,12 @@ public class ReportController extends AbstractController{
         model = new ReportManager();
     }
 
-    public void dailyReport(){
-        model.compileDailyReport();
+    public JRViewer dailyReport(){
+        return model.compileDailyReport();
     }
 
-    public void canceledReport(){
-        model.compileCanceledReport();
+    public JRViewer canceledReport(){
+        return model.compileCanceledReport();
     }
 
 }
