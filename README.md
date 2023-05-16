@@ -8,6 +8,18 @@
 **Version 1.0.0-dev** 
 <hr>
 
+This application was made using **Intellij** <br>
+The UI was designed using **JFormDesigner** <br>
+The reports were made with **JaspersoftStudio** <br>
+The database was managed via **XAMPP** with MySQL as the language
+
+# HOW TO RUN 
+
+- add lib to CLASSPATH
+- create a database in _localhost:3306_ using [___scripts.sql___](script.sql)
+- run [___Main.java___](src/Main.java)
+<hr>
+
 # Functionality
 - place a reservation
 - manage tables
@@ -17,7 +29,7 @@
 - generate reports on 
   - daily reservations
   - daily canceled reservations
-- 
+
 
 <hr>
 
