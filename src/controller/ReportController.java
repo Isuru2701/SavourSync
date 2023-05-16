@@ -1,5 +1,8 @@
 package controller;
 
+import model.ReportManager;
+import view.ReportView;
+
 /**
  * Controller for ReportView
  * <br>
@@ -7,4 +10,13 @@ package controller;
  *
  */
 public class ReportController extends AbstractController{
+
+    private ReportView view;
+    private ReportManager model;
+
+    public ReportController(){
+
+    }
+
+
 }
