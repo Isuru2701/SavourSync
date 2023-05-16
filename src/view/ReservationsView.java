@@ -123,7 +123,7 @@ public class ReservationsView extends AbstractView {
             } else {
                 try {
 
-                    if(reservations.getValueAt(row, 4).equals("pending")) {
+                    if(reservations.getValueAt(row, 5).equals("PENDING")) {
                         int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to cancel this reservation?", "Cancel Reservation", JOptionPane.YES_NO_OPTION);
                         if (reply == 0) {
                             int id = Integer.parseInt((String) reservations.getValueAt(row, 0));
@@ -208,7 +208,13 @@ public class ReservationsView extends AbstractView {
 
     public void populate() {
 
-        DefaultTableModel model = controller.fetch();
+        DefaultTableModel model;
+        if(!viewToggle.isSelected()) {
+            model = controller.fetch();
+        }
+        else {
+            model = controller.fetchAll();
+        }
 
         if(model != null) {
             reservations.setModel(model);
@@ -224,6 +230,8 @@ public class ReservationsView extends AbstractView {
             reservations.setModel(new DefaultTableModel());
 
         }
+
+        resizeTable(reservations);
 
         Restaurant.init();
 

@@ -70,16 +70,16 @@ public class Reservation {
 
     /**
      * check if there is a reservation for this table at the given time, AND for an hour after
-     * @param no
-     * @param datetime
-     * @return
+     * @param no table number
+     * @param datetime datetime as a STRING
+     * @return boolean
      */
     public static boolean checkIfBooked(Integer no, String datetime) {
         try{
             DBConn db = new DBConn();
             String query = "SELECT * FROM reservation WHERE table_id = ? AND start_datetime = ?";
             ResultSet reply = db.query(query, no, datetime);
-            if(reply.next()) {
+            if(reply.next() && !hasOverlap(no, datetime)) {
                 return true;
             }
         } catch (SQLException e) {
@@ -98,7 +98,14 @@ public class Reservation {
                 //if the datetime is the same, or if the datetime is within an hour of the reservation
                 //an overlap is occurring
                 //TODO
-                if(res.getDateTime().equals(LocalDateTime.parse(datetime)) || res.getDateTime().isAfter(LocalDateTime.parse(datetime).minusHours(1)) || res.getDateTime().isBefore(LocalDateTime.parse(datetime).plusHours(1))) {
+
+                System.out.println(datetime);
+                //yyyy-MM-dd HH:mm
+                LocalDateTime date = LocalDateTime.parse(datetime + "00");
+                //datetime equal, if above, check after, if below, check before
+                if(res.getDateTime().equals(LocalDateTime.parse(datetime)) ||
+                        (date.plusHours(1).isAfter(res.getDateTime()) && date.plusHours(1).isBefore(res.getDateTime().plusHours(1))) ||
+                        (res.getDateTime().isAfter(date)) && res.getDateTime().isBefore(date.plusHours(1))) {
                     return true;
                 }
             }
@@ -157,7 +164,6 @@ public class Reservation {
 
             DBConn db = new DBConn();
 
-            if(status.equals("pending")) {
                 //add this reservation to canceled first.
                 String query = "INSERT INTO canceled (client_id, table_id, start_datetime) SELECT client_id, table_id, start_datetime FROM reservation WHERE id = ?;";
                 db.write(query, id);
@@ -165,7 +171,7 @@ public class Reservation {
                 query = "DELETE FROM reservation WHERE id = ? ;";
                 status = "CANCELED";
                 db.write(query, id);
-            };
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
             throw new RuntimeException();
