@@ -4,29 +4,26 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
-			"$columnSpecs": "0"
-			"$rowSpecs": "0, 0, 0, 0"
-			"$hGap": 5
-			"$vGap": 5
+			"$columnSpecs": "0:1.0, 0:1.0"
 			"$alignTop": true
 			"$alignLeft": true
+			"$rowSpecs": "20, 0:1.0"
 		} ) {
 			name: "this"
-			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "dailyButton"
-				"text": "Daily Report"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+				name: "dailyPanel"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
 				"gridy": 1
 			} )
-			add( new FormComponent( "javax.swing.JButton" ) {
-				name: "cancelsButton"
-				"text": "Cancellations"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) ) {
+				name: "cancelPanel"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
-				"gridy": 3
+				"gridx": 1
+				"gridy": 1
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 400, 300 )
+			"size": new java.awt.Dimension( 695, 545 )
 		} )
 	}
 }

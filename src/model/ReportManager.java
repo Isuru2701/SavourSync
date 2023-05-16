@@ -15,13 +15,17 @@ import java.util.Map;
 
 public class ReportManager {
 
+    //as the app could be placed anywhere, fetch the dir path to cal abs path
+    private String directory = System.getProperty("user.dir");
+
     public void compileDailyReport() {
+
         try {
             DBConn db = new DBConn();
             String query = "SELECT * FROM reservation WHERE DATE(start_datetime) = CURDATE();";
             ResultSet reply = db.query(query);
 
-            InputStream input = new FileInputStream(new File("C:\\Users\\ASUS\\Documents\\Programs\\SavourSync\\src\\model\\reportTemplates\\DayReport.jrxml"));
+            InputStream input = new FileInputStream(new File(directory + "\\src\\model\\reportTemplates\\DayReport.jrxml"));
 
             JasperDesign jd = JRXmlLoader.load(input);
 
@@ -51,7 +55,7 @@ public class ReportManager {
             String query = "SELECT * FROM canceled WHERE DATE(start_datetime) = CURDATE();";
             ResultSet reply = db.query(query);
 
-            InputStream input = new FileInputStream(new File("C:\\Users\\ASUS\\Documents\\Programs\\SavourSync\\src\\model\\reportTemplates\\Cancelled.jrxml"));
+            InputStream input = new FileInputStream(new File(directory + "\\src\\model\\reportTemplates\\Cancelled.jrxml"));
 
             JasperDesign jd = JRXmlLoader.load(input);
 
