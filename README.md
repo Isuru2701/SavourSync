@@ -5,30 +5,42 @@
 <br>
 [![](https://img.shields.io/badge/Github-black?style=flat-square&logo=github&logoColor=white&labelColor=black)](https://github.com/Isuru2701/SavourSync)
 
-**HEAVY STC** 
+**Version 1.0.0-dev** 
+<hr>
+
+# Functionality
+- place a reservation
+- manage tables
+- check availability of tables
+- view reservations
+- view capacity occupied
+- generate reports on 
+  - daily reservations
+  - daily canceled reservations
+- 
+
 <hr>
 
 ## Key Views
 
-- [ ] placing reservations (form)
+- [x] placing reservations (form)
   - [x] check availability 
   - [x] select date and time
   - [x] select table, check if this timeslot is available
    
 <hr>
 
-- [ ] Dashboard:
-    - [ ] list of reservations for the day
-    - [ ] list of upcoming reservations
-    - [ ] Capacity as a percentage
-    - [ ] Add/edit/delete tables
+- [x] Dashboard:
+    - [x] list of reservations for the day
+    - [x] list of upcoming reservations
+    - [x] Capacity as a percentage
+    - [x] add/delete tables
 
 <hr>
 
-- [ ] Report:
-  - [ ] reservation % for each weekday
-  - [ ] most booked dates & times
-  - [ ] reservation summary for the week
+- [x] Report:
+  - [x] Daily report
+  - [x] Cancellations report
 
 <hr>
 

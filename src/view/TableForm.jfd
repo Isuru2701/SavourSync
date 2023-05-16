@@ -7,16 +7,6 @@ new FormModel {
 			name: "this"
 			"preferredSize": new java.awt.Dimension( 500, 500 )
 			add( new FormComponent( "javax.swing.JLabel" ) {
-				name: "label1"
-				"text": "Manage Tables"
-				"font": new java.awt.Font( "Segoe UI", 1, 16 )
-			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
-				"x": 15
-				"y": 0
-				"width": 130
-				"height": 30
-			} )
-			add( new FormComponent( "javax.swing.JLabel" ) {
 				name: "label2"
 				"text": "Add a table"
 			}, new FormLayoutConstraints( class com.jformdesigner.runtime.NullConstraints ) {
