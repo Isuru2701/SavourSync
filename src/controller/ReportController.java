@@ -14,9 +14,13 @@ public class ReportController extends AbstractController{
     private ReportView view;
     private ReportManager model;
 
-    public ReportController(){
-
+    public ReportController(ReportView view){
+        this.view = view;
+        model = new ReportManager();
     }
 
+    public void dailyReport(){
+        model.compileDailyReport();
+    }
 
 }
