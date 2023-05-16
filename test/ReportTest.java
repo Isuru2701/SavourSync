@@ -13,7 +13,7 @@ public class ReportTest extends JFrame {
 
     public static void main(String[] args) {
         try {
-            JasperReport jr = JasperCompileManager.compileReport("../src/reportTemplates/testReport.jrxml");
+            JasperReport jr = JasperCompileManager.compileReport("C:\\Users\\ASUS\\Documents\\Programs\\SavourSync\\src\\reportTemplates\\testReport.jrxml");
 
             DBConn db = new DBConn();
             ResultSet reply = db.query("Select * from client");
