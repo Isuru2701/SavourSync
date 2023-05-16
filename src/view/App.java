@@ -26,9 +26,16 @@ public class App extends JFrame {
             UIManager.setLookAndFeel(new FlatMacDarkLaf());
         }
         catch (UnsupportedLookAndFeelException ignored) {
-
+            JOptionPane.showMessageDialog(null, "This application uses FlatMackDarkLAF. For a best experience, make sure the library is present.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        initComponents();
+        try {
+            initComponents();
+        }
+        catch(Exception e){
+            //exit the application if an error occurs
+            JOptionPane.showMessageDialog(null, "An error occurred while initializing the application.\n Here are some steps to troubleshoot:\n - Make sure the database is online\n - Check for missing libraries\n - Do a fresh re-install", "Error", JOptionPane.ERROR_MESSAGE);
+            System.exit(1);
+        }
     }
 
     private void initComponents() {
