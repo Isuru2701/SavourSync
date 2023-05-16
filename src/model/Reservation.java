@@ -68,6 +68,12 @@ public class Reservation {
 
     }
 
+    /**
+     * check if there is a reservation for this table at the given time, AND for an hour after
+     * @param no
+     * @param datetime
+     * @return
+     */
     public static boolean checkIfBooked(Integer no, String datetime) {
         try{
             DBConn db = new DBConn();
@@ -78,6 +84,24 @@ public class Reservation {
             }
         } catch (SQLException e) {
             throw new RuntimeException(e.getMessage());
+        }
+
+        return false;
+    }
+
+    private static boolean hasOverlap(Integer no, String datetime) {
+        List<Reservation> rList = getResultSet();
+
+        for(Reservation res : rList) {
+            if(res.tableId == no) {
+                //for the same table,
+                //if the datetime is the same, or if the datetime is within an hour of the reservation
+                //an overlap is occurring
+                //TODO
+                if(res.getDateTime().equals(LocalDateTime.parse(datetime)) || res.getDateTime().isAfter(LocalDateTime.parse(datetime).minusHours(1)) || res.getDateTime().isBefore(LocalDateTime.parse(datetime).plusHours(1))) {
+                    return true;
+                }
+            }
         }
 
         return false;

@@ -11,9 +11,9 @@
 ## Key Views
 
 - [ ] placing reservations (form)
-  - [ ] check availability 
-  - [ ] select date and time
-  - [ ] select number of guests
+  - [x] check availability 
+  - [x] select date and time
+  - [x] select table, check if this timeslot is available
    
 <hr>
 
