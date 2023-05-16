@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -79,7 +80,7 @@ public class Reservation {
             DBConn db = new DBConn();
             String query = "SELECT * FROM reservation WHERE table_id = ? AND start_datetime = ?";
             ResultSet reply = db.query(query, no, datetime);
-            if(reply.next() && !hasOverlap(no, datetime)) {
+            if(reply.next()) {
                 return true;
             }
         } catch (SQLException e) {
@@ -91,9 +92,16 @@ public class Reservation {
 
     private static boolean hasOverlap(Integer no, String datetime) {
         List<Reservation> rList = getResultSet();
-
+        LocalDateTime date = LocalDateTime.now();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-M-dd HH:m");
+        try {
+             date = LocalDateTime.from(dtf.parse(datetime));
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
         for(Reservation res : rList) {
             if(res.tableId == no) {
+                System.out.println(res.clientId + " " + res.tableId);
                 //for the same table,
                 //if the datetime is the same, or if the datetime is within an hour of the reservation
                 //an overlap is occurring
@@ -101,7 +109,6 @@ public class Reservation {
 
                 System.out.println(datetime);
                 //yyyy-MM-dd HH:mm
-                LocalDateTime date = LocalDateTime.parse(datetime + "00");
                 //datetime equal, if above, check after, if below, check before
                 if(res.getDateTime().equals(LocalDateTime.parse(datetime)) ||
                         (date.plusHours(1).isAfter(res.getDateTime()) && date.plusHours(1).isBefore(res.getDateTime().plusHours(1))) ||
